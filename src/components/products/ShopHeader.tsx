@@ -27,12 +27,18 @@ export function ShopHeader() {
         <Link href="/heritage" className="uppercase transition-colors hover:text-white">
           Heritage
         </Link>
-        <Link href="/about" className="uppercase transition-colors hover:text-white">
-          About
+        <Link href="/contact" className="uppercase transition-colors hover:text-white">
+          Contacts
         </Link>
       </nav>
 
       <div className="flex items-center gap-3">
+        <Link
+          href="/login"
+          className="hidden text-xs font-medium tracking-widest text-white/70 uppercase transition-colors hover:text-white sm:inline"
+        >
+          Log In
+        </Link>
         <Link
           href="/wishlist"
           aria-label={`Wishlist, ${wishlistCount} item${wishlistCount === 1 ? "" : "s"}`}

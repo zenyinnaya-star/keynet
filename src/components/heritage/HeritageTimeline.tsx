@@ -22,9 +22,6 @@ export function HeritageTimeline() {
             Our Products
           </Link>
           <span className="uppercase text-white">Heritage</span>
-          <Link href="/about" className="uppercase transition-colors hover:text-white">
-            About
-          </Link>
         </nav>
       </header>
 
