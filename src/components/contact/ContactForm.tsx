@@ -57,7 +57,7 @@ export function ContactForm() {
                 handleNext();
               }
             }}
-            className="w-full border-b border-white/20 bg-transparent py-2 text-sm text-white placeholder:text-white/40 focus:border-red-500 focus:outline-none"
+            className="w-full border-b border-white/20 bg-transparent py-2 text-sm text-white placeholder:text-white/40 focus:border-teal-500 focus:outline-none"
           />
         ) : (
           <input
@@ -66,7 +66,7 @@ export function ContactForm() {
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Enter your e-mail"
-            className="w-full border-b border-white/20 bg-transparent py-2 text-sm text-white placeholder:text-white/40 focus:border-red-500 focus:outline-none"
+            className="w-full border-b border-white/20 bg-transparent py-2 text-sm text-white placeholder:text-white/40 focus:border-teal-500 focus:outline-none"
           />
         )}
 
@@ -74,7 +74,7 @@ export function ContactForm() {
           type={step === "name" ? "button" : "submit"}
           onClick={step === "name" ? handleNext : undefined}
           aria-label={step === "name" ? "Next" : "Send"}
-          className="flex shrink-0 items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold text-white transition-colors hover:border-red-500 hover:text-red-500"
+          className="flex shrink-0 items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold text-white transition-all hover:border-teal-500 hover:text-teal-500 hover:shadow-[0_0_12px_rgba(242,210,255,0.2)] hover:bg-black/20"
         >
           {step === "name" ? "Next" : "Send"}
           <span aria-hidden>→</span>
@@ -86,13 +86,13 @@ export function ContactForm() {
         <span
           className={cn(
             "h-px flex-1",
-            step === "email" ? "bg-red-500" : "bg-white/20",
+            step === "email" ? "bg-teal-500" : "bg-white/20",
           )}
         />
         <span className={cn(step === "email" ? "text-white" : "")}>E-mail</span>
       </div>
 
-      {error && <p className="mt-2 text-xs text-red-500">{error}</p>}
+      {error && <p className="mt-2 text-xs text-teal-500">{error}</p>}
     </form>
   );
 }

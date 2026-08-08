@@ -10,12 +10,7 @@ export function ShopHeader() {
 
   return (
     <header className="flex items-center justify-between px-6 py-6 sm:px-10">
-      <Link href="/" className="flex items-center gap-3">
-        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-red-600 text-sm font-bold">
-          K
-        </span>
-        <span className="hidden text-sm font-semibold tracking-wide sm:inline">keynex</span>
-      </Link>
+      <div></div>
 
       <nav className="hidden items-center gap-8 text-xs font-medium tracking-widest text-white/80 md:flex">
         <Link href="/" className="uppercase transition-colors hover:text-white">
@@ -46,7 +41,7 @@ export function ShopHeader() {
         >
           <span aria-hidden>♡</span>
           {wishlistCount > 0 && (
-            <span className="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-600 px-1 text-[10px] font-bold text-white">
+            <span className="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-teal-600 px-1 text-[10px] font-bold text-white">
               {wishlistCount}
             </span>
           )}
@@ -58,7 +53,7 @@ export function ShopHeader() {
         >
           <span aria-hidden>🛒</span>
           {cartCount > 0 && (
-            <span className="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-600 px-1 text-[10px] font-bold text-white">
+            <span className="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-teal-600 px-1 text-[10px] font-bold text-white">
               {cartCount}
             </span>
           )}

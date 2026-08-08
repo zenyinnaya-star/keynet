@@ -27,7 +27,7 @@ export default function WishlistPage() {
             <p className="text-sm text-white/60">Nothing saved yet.</p>
             <Link
               href="/products"
-              className="mt-6 inline-block rounded-full bg-red-600 px-5 py-2.5 text-xs font-bold text-white transition-colors hover:bg-red-500"
+              className="mt-6 inline-block rounded-full bg-gradient-to-r from-teal-600 to-teal-500 px-5 py-2.5 text-xs font-bold text-white transition-all hover:shadow-[0_0_15px_rgba(242,210,255,0.3)]"
             >
               Browse products
             </Link>
@@ -54,7 +54,7 @@ export default function WishlistPage() {
                     <p className="mt-4 text-center text-lg font-semibold text-white">
                       {product.name}
                     </p>
-                    <p className="mt-1 text-center text-sm font-semibold text-red-500">
+                    <p className="mt-1 text-center text-sm font-semibold text-teal-500">
                       ${product.price},-
                     </p>
                     <div className="mt-2 flex justify-center gap-2">

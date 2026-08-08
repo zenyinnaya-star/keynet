@@ -39,13 +39,13 @@ export function StarRating({
             onClick={() => onChange(star)}
             className={cn(
               "transition-colors",
-              filled ? "text-red-500" : "text-white/20 hover:text-red-500/60",
+              filled ? "text-teal-500" : "text-white/20 hover:text-teal-500/60",
             )}
           >
             ★
           </button>
         ) : (
-          <span key={star} aria-hidden className={filled ? "text-red-500" : "text-white/20"}>
+          <span key={star} aria-hidden className={filled ? "text-teal-500" : "text-white/20"}>
             ★
           </span>
         );

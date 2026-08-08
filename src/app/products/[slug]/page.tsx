@@ -49,7 +49,7 @@ export default async function ProductDetailPage({
 
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="relative flex justify-center">
-            <div className="absolute h-64 w-64 rounded-full bg-red-600/10 blur-3xl" />
+            <div className="absolute h-64 w-64 rounded-full bg-teal-600/10 blur-3xl" />
             <Image
               src="/hero-headphones-3d.webp"
               alt={`${product.name} headphones`}
@@ -78,7 +78,7 @@ export default async function ProductDetailPage({
               </span>
             </div>
 
-            <p className="mt-4 text-2xl font-bold text-red-500">${product.price},-</p>
+            <p className="mt-4 text-2xl font-bold text-teal-500">${product.price},-</p>
 
             <p className="mt-6 text-sm leading-7 text-white/70">{product.description}</p>
 

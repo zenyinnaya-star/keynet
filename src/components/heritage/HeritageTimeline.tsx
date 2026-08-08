@@ -6,14 +6,7 @@ export function HeritageTimeline() {
   return (
     <div className="min-h-screen bg-black text-white">
       <header className="flex items-center justify-between px-6 py-6 sm:px-10">
-        <Link href="/" className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-red-600 text-sm font-bold">
-            K
-          </span>
-          <span className="hidden text-sm font-semibold tracking-wide sm:inline">
-            keynex
-          </span>
-        </Link>
+        <div></div>
         <nav className="hidden items-center gap-8 text-xs font-medium tracking-widest text-white/80 md:flex">
           <Link href="/" className="uppercase transition-colors hover:text-white">
             Home
@@ -35,7 +28,7 @@ export function HeritageTimeline() {
             <p className="mt-1 text-xs tracking-[0.3em] text-white/30 uppercase">
               March 03
             </p>
-            <div className="mt-6 h-px w-16 bg-red-600" />
+            <div className="mt-6 h-px w-16 bg-gradient-to-r from-teal-600 to-[#F2D2FF]" />
             <p className="mt-6 text-sm leading-7 text-white/70 sm:text-[15px]">
               keynex began as a shared frustration: everyday audio gear that
               looked disposable and sounded worse. Co-founders Zabdiel and
@@ -55,7 +48,7 @@ export function HeritageTimeline() {
               * * *
             </p>
             <h2 className="mt-4 text-center text-2xl font-bold tracking-tight uppercase sm:text-3xl">
-              The Founding of Keynex
+              The Founding of <span style={{ color: "#F2D2FF" }}>Keynex</span>
             </h2>
           </Reveal>
 
@@ -82,20 +75,6 @@ export function HeritageTimeline() {
         </Reveal>
 
         <div className="relative mx-auto mt-12 grid max-w-6xl grid-cols-1 items-center gap-10 px-6 sm:px-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)_minmax(0,0.8fr)] lg:gap-6">
-          <Reveal delayMs={100} className="order-2 flex justify-center lg:order-1">
-            <Image
-              src="/founders/zabdiel.webp"
-              alt="Zabdiel, co-founder of keynex"
-              width={1151}
-              height={1523}
-              sizes="(min-width: 1024px) 260px, 220px"
-              style={{
-                filter:
-                  "grayscale(0.55) sepia(0.15) hue-rotate(50deg) contrast(1.1) brightness(0.95)",
-              }}
-              className="h-64 w-auto object-contain transition-transform duration-500 hover:scale-105 sm:h-80"
-            />
-          </Reveal>
 
           <Reveal delayMs={200} className="order-1 lg:order-2">
             <p className="text-sm leading-7 text-white/70 sm:text-[15px]">
@@ -113,21 +92,6 @@ export function HeritageTimeline() {
               over in every internal review before they reach a single
               customer.
             </p>
-          </Reveal>
-
-          <Reveal delayMs={300} className="order-3 flex justify-center">
-            <Image
-              src="/founders/santiago.webp"
-              alt="Santiago, co-founder of keynex"
-              width={2257}
-              height={2959}
-              sizes="(min-width: 1024px) 260px, 220px"
-              style={{
-                filter:
-                  "grayscale(0.55) sepia(0.15) hue-rotate(50deg) contrast(1.1) brightness(0.95)",
-              }}
-              className="h-64 w-auto object-contain transition-transform duration-500 hover:scale-105 sm:h-80"
-            />
           </Reveal>
         </div>
 
@@ -149,7 +113,7 @@ export function HeritageTimeline() {
             <p className="mt-1 text-xs tracking-[0.3em] text-white/30 uppercase">
               September 18
             </p>
-            <div className="mx-auto mt-6 h-px w-16 bg-red-600" />
+            <div className="mx-auto mt-6 h-px w-16 bg-teal-600" />
             <p className="mt-6 text-sm leading-7 text-white/70 sm:text-[15px]">
               Misty joined keynex as its third full-time hire and became CEO
               not long after, taking over day-to-day leadership so the
@@ -164,10 +128,10 @@ export function HeritageTimeline() {
               * * *
             </p>
             <h2 className="mt-4 text-2xl font-bold tracking-tight uppercase sm:text-3xl">
-              Misty
+              <span style={{ color: "#F2D2FF" }}>Misty</span>
             </h2>
             <p className="mt-1 text-xs tracking-[0.3em] text-white/40 uppercase">
-              Current CEO
+              Current <span style={{ color: "#F2D2FF" }}>CEO</span>
             </p>
           </Reveal>
         </div>

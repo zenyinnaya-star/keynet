@@ -40,7 +40,7 @@ export function ProductGrid() {
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search products..."
             aria-label="Search products"
-            className="w-full rounded-full border border-white/20 bg-zinc-900/80 px-5 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-red-500 focus:outline-none"
+            className="w-full rounded-full border border-white/20 bg-zinc-900/80 px-5 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-teal-500 focus:outline-none"
           />
         </div>
         {query && (
@@ -68,19 +68,19 @@ export function ProductGrid() {
 
       {compareSlugs.length >= 2 && (
         <div className="fixed inset-x-0 bottom-6 z-40 flex justify-center px-4">
-          <div className="flex items-center gap-4 rounded-full bg-zinc-900 px-6 py-3 shadow-2xl shadow-black/50 ring-1 ring-white/10">
+          <div className="flex items-center gap-4 rounded-full bg-gradient-to-r from-zinc-900 to-zinc-900/60 px-6 py-3 shadow-2xl shadow-[#F2D2FF]/20 ring-1 ring-white/10 backdrop-blur">
             <span className="text-sm text-white/70">{compareSlugs.length} selected</span>
             <button
               type="button"
               onClick={() => setShowCompare(true)}
-              className="rounded-full bg-red-600 px-4 py-1.5 text-xs font-bold text-white transition-colors hover:bg-red-500"
+              className="rounded-full bg-gradient-to-r from-teal-600 to-teal-500 px-4 py-1.5 text-xs font-bold text-white transition-all hover:shadow-[0_0_15px_rgba(242,210,255,0.3)]"
             >
               Compare
             </button>
             <button
               type="button"
               onClick={() => setCompareSlugs([])}
-              className="text-xs text-white/50 transition-colors hover:text-white"
+              className="text-xs text-white/50 transition-colors hover:text-white hover:text-[#F2D2FF]"
             >
               Clear
             </button>

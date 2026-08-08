@@ -21,7 +21,7 @@ export default function CartPage() {
             <p className="text-sm text-white/60">Your cart is empty.</p>
             <Link
               href="/products"
-              className="mt-6 inline-block rounded-full bg-red-600 px-5 py-2.5 text-xs font-bold text-white transition-colors hover:bg-red-500"
+              className="mt-6 inline-block rounded-full bg-gradient-to-r from-teal-600 to-teal-500 px-5 py-2.5 text-xs font-bold text-white transition-all hover:shadow-[0_0_15px_rgba(242,210,255,0.3)]"
             >
               Browse products
             </Link>
@@ -71,7 +71,7 @@ export default function CartPage() {
                         +
                       </button>
                     </div>
-                    <p className="w-16 text-right text-sm font-semibold text-red-500">
+                    <p className="w-16 text-right text-sm font-semibold text-teal-500">
                       ${product.price * item.quantity},-
                     </p>
                     <button
@@ -103,7 +103,7 @@ export default function CartPage() {
 
             <button
               type="button"
-              className="mt-6 w-full rounded-full bg-red-600 py-3 text-sm font-bold text-white transition-colors hover:bg-red-500"
+              className="mt-6 w-full rounded-full bg-gradient-to-r from-teal-600 to-teal-500 py-3 text-sm font-bold text-white transition-all hover:shadow-[0_0_20px_rgba(242,210,255,0.3)]"
             >
               Checkout
             </button>

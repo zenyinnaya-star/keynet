@@ -63,7 +63,7 @@ export function CompareModal({
                 {products.map((product) => (
                   <td
                     key={product.slug}
-                    className="px-3 py-3 text-center font-semibold text-red-500"
+                    className="px-3 py-3 text-center font-semibold text-teal-500"
                   >
                     ${product.price},-
                   </td>

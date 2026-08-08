@@ -32,11 +32,11 @@ export function ProductShowcase() {
         {/* Section header */}
         <div className="mb-8 flex items-end justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-red-500">
-              Shop
+            <p className="text-xs font-semibold uppercase tracking-[0.3em]">
+              <span style={{ color: "#F2D2FF" }}>Shop</span>
             </p>
             <h1 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
-              Our Products
+              Our <span style={{ color: "#F2D2FF" }}>Products</span>
             </h1>
           </div>
           <p className="hidden text-xs text-white/40 sm:block">
@@ -52,8 +52,8 @@ export function ProductShowcase() {
             Featured
           </p>
 
-          <div className="relative overflow-hidden rounded-3xl bg-zinc-900/80 pl-8 sm:pl-10">
-            <div className="absolute inset-y-0 left-0 w-8 bg-red-600 sm:w-10">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 pl-8 sm:pl-10 border border-white/5 backdrop-blur-sm">
+            <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-b from-teal-600 to-teal-600/80 sm:w-10 shadow-[2px_0_15px_rgba(242,210,255,0.2)]">
               <span className="absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 -rotate-90 text-[10px] font-semibold tracking-[0.3em] whitespace-nowrap text-white/80 uppercase">
                 Welcome to keynex
               </span>
@@ -81,7 +81,7 @@ export function ProductShowcase() {
                 <h2 className="text-3xl font-semibold sm:text-4xl">
                   Headphones — {product.name}
                 </h2>
-                <p className="mt-3 text-2xl font-bold text-red-500">${product.price},-</p>
+                <p className="mt-3 text-2xl font-bold text-teal-500">${product.price},-</p>
                 <p className="mt-3 max-w-sm text-sm leading-6 text-white/60">
                   {product.tagline}
                 </p>
@@ -102,7 +102,7 @@ export function ProductShowcase() {
                         key={social.label}
                         href={social.href}
                         aria-label={social.label}
-                        className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-[10px] font-semibold text-white/70 transition-all hover:border-red-500 hover:text-white"
+                        className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-[10px] font-semibold text-white/70 transition-all hover:border-teal-500 hover:text-white"
                       >
                         {social.initials}
                       </a>

@@ -24,32 +24,35 @@ const SOCIAL_LINKS = [
 const SLIDES = [
   {
     eyebrow: "New Arrival",
+    productName: "Keynex TypeFlow",
+    image: "/hero-headphones-3d.webp",
     description:
-      "This is your landing page hero, styled after a bold, image-driven product showcase. Swap this copy for your own product or brand story.",
+      "Keynex TypeFlow delivers smooth, responsive typing with a clean, minimalist design. Comfortable, consistent, and easy to use, it keeps your workflow steady whether you're studying, working, or typing through your day.",
   },
   {
-    eyebrow: "Studio Sound",
+    eyebrow: "Most Popular",
+    productName: "Keynex Echo G3",
+    image: "/hero-headphones-3d.webp",
     description:
-      "Tuned drivers and active noise cancellation built for hours of immersive, distraction-free listening.",
+      "The Keynex Echo G3 delivers warm, immersive audio in a sleek, lightweight design. With its minimalist look and all‑day comfort, it's the perfect companion for studying, gaming, or escaping into your favorite sounds.",
   },
   {
     eyebrow: "Everyday Comfort",
+    productName: "Keynex Comfort Pro",
+    image: "/hero-headphones-3d.webp",
     description:
-      "Memory-foam ear cushions and a featherweight frame mean you forget you're wearing them at all.",
+      "Keynex Comfort Pro is built for all‑day ease, blending soft cushioning with a lightweight frame for effortless wear. Its clear, balanced audio makes every call, song, and moment feel smooth and comfortable.",
   },
   {
-    eyebrow: "All-Day Battery",
+    eyebrow: "Effortless Clarity",
+    productName: "Keynex Ultra View X",
+    image: "/hero-headphones-3d.webp",
     description:
-      "Up to 30 hours on a single charge, with fast-charge support when you're in a hurry.",
-  },
-  {
-    eyebrow: "Crafted to Last",
-    description:
-      "Premium matte-finish materials and a reinforced hinge, designed to go the distance.",
+      "Keynex UltraView X delivers sharp detail, rich color, and a smooth viewing experience inside a refined, modern frame. Built for clarity and comfort, it elevates your workspace with premium visuals that stay crisp whether you're working, creating, or unwinding.",
   },
 ];
 
-const AUTO_ADVANCE_MS = 6000;
+const AUTO_ADVANCE_MS = 12000;
 
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -93,10 +96,10 @@ export default function Home() {
           style={{
             clipPath: "polygon(55% 0, 100% 0, 100% 100%, 40% 100%)",
             background:
-              "radial-gradient(circle at 75% 45%, #2a0a0a 0%, #120404 45%, #000 80%)",
+              "radial-gradient(circle at 75% 45%, #9b7fb8 0%, #6b4f8c 45%, #000 80%)",
           }}
         />
-        <div className="animate-glow-pulse absolute inset-0 bg-[radial-gradient(circle_at_85%_60%,rgba(220,20,20,0.25),transparent_45%)]" />
+        <div className="animate-glow-pulse absolute inset-0 bg-[radial-gradient(circle_at_85%_60%,rgba(62,130,142,0.25),rgba(242,210,255,0.15),transparent_45%)]" />
       </div>
 
       {/* Nav */}
@@ -108,14 +111,7 @@ export default function Home() {
             : "border-b border-transparent bg-transparent",
         )}
       >
-        <Link href="/" className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-red-600 text-sm font-bold transition-transform hover:scale-110">
-            K
-          </span>
-          <span className="hidden text-sm font-semibold tracking-wide sm:inline">
-            keynex
-          </span>
-        </Link>
+        <div></div>
 
         <nav className="hidden items-center gap-8 text-xs font-medium tracking-widest text-white/80 md:flex">
           {NAV_LINKS.map((link) => {
@@ -133,7 +129,7 @@ export default function Home() {
                 {link.label}
                 <span
                   className={cn(
-                    "absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-red-500 transition-transform duration-300 group-hover:scale-x-100",
+                    "absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-teal-500 transition-transform duration-300 group-hover:scale-x-100",
                     isActive && "scale-x-100",
                   )}
                 />
@@ -149,7 +145,7 @@ export default function Home() {
                 key={social.label}
                 href={social.href}
                 aria-label={social.label}
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-[10px] font-semibold text-white/70 transition-all duration-200 hover:scale-110 hover:border-red-500 hover:text-white"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-[10px] font-semibold text-white/70 transition-all duration-200 hover:scale-110 hover:border-[#F2D2FF] hover:text-[#F2D2FF] hover:bg-[#F2D2FF]/10"
               >
                 {social.initials}
               </a>
@@ -212,7 +208,7 @@ export default function Home() {
                 key={social.label}
                 href={social.href}
                 aria-label={social.label}
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-[10px] font-semibold text-white/70 transition-colors hover:border-red-500 hover:text-white"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-[10px] font-semibold text-white/70 transition-colors hover:border-teal-500 hover:text-white"
               >
                 {social.initials}
               </a>
@@ -225,28 +221,28 @@ export default function Home() {
       <div className="relative z-10 flex min-h-[calc(100vh-88px)] flex-col justify-center px-6 sm:px-10 lg:px-20">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div key={activeSlide} className="max-w-xl animate-fade-in-up">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-red-500">
-              {slide.eyebrow}
+            <p className="pb-4 text-xs font-semibold uppercase tracking-[0.3em]">
+              <span style={{ color: "#F2D2FF" }}>{slide.eyebrow}</span>
             </p>
 
             <h1
               className={cn(
                 script.className,
-                "mt-2 text-7xl leading-none text-red-600 drop-shadow-[0_0_25px_rgba(220,20,20,0.45)] sm:text-8xl",
+                "mt-2 text-5xl leading-none text-teal-600 drop-shadow-[0_0_25px_rgba(62,130,142,0.45)] sm:text-6xl",
               )}
             >
-              keynex
+              {slide.productName}
             </h1>
 
             <div className="mt-6 flex items-center gap-4">
-              <div className="h-px w-16 bg-red-600" />
+              <div className="h-px w-full max-w-2xl bg-gradient-to-r from-teal-600 to-[#F2D2FF]" />
             </div>
 
             <p className="mt-4 max-w-md text-sm leading-6 text-white/70 sm:text-base">
               {slide.description}
             </p>
 
-            <button className="group mt-8 inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/20 px-5 py-2.5 text-xs font-medium uppercase tracking-wider text-white/90 transition-colors hover:border-white/50 hover:bg-white/5">
+            <button className="group mt-8 inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/20 px-5 py-2.5 text-xs font-medium uppercase tracking-wider text-white/90 transition-all hover:border-[#F2D2FF]/50 hover:bg-[#F2D2FF]/5 hover:shadow-[0_0_12px_rgba(242,210,255,0.2)]">
               Read More
               <span
                 aria-hidden
@@ -259,10 +255,10 @@ export default function Home() {
 
           {/* Hero product image */}
           <div className="relative flex items-center justify-center lg:justify-end">
-            <div className="absolute h-72 w-72 rounded-full bg-red-600/20 blur-3xl sm:h-96 sm:w-96" />
+            <div className="absolute h-72 w-72 rounded-full bg-gradient-to-br from-blue-200/30 to-pink-100/30 blur-3xl sm:h-96 sm:w-96" />
             <Image
-              src="/hero-headphones-3d.webp"
-              alt="3D wireframe render of Axiom wireless headphones"
+              src={slide.image}
+              alt={`${slide.productName} product image`}
               width={840}
               height={985}
               sizes="(min-width: 640px) 360px, 280px"
@@ -283,9 +279,9 @@ export default function Home() {
             aria-current={index === activeSlide}
             onClick={() => goToSlide(index)}
             className={cn(
-              "block h-2 w-2 rounded-full border border-white/50 transition-all duration-300 hover:scale-125 hover:border-red-500",
+              "block h-2 w-2 rounded-full border border-white/50 transition-all duration-300 hover:scale-125 hover:border-[#F2D2FF] hover:shadow-[0_0_8px_rgba(242,210,255,0.4)]",
               index === activeSlide
-                ? "scale-125 border-red-500 bg-red-500"
+                ? "scale-125 border-[#F2D2FF] bg-[#F2D2FF]"
                 : "bg-transparent",
             )}
           />

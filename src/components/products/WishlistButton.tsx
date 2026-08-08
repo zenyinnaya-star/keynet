@@ -26,8 +26,8 @@ export function WishlistButton({
       className={cn(
         "flex h-9 w-9 items-center justify-center rounded-full border text-base transition-all hover:scale-110",
         active
-          ? "border-red-500 bg-red-500/10 text-red-500"
-          : "border-white/20 bg-black/40 text-white/60 hover:border-white/50 hover:text-white",
+          ? "border-teal-500 bg-gradient-to-br from-teal-500/20 to-[#F2D2FF]/20 text-teal-500 shadow-[0_0_15px_rgba(242,210,255,0.2)]"
+          : "border-white/20 bg-black/40 text-white/60 hover:border-white/50 hover:text-white hover:shadow-[0_0_10px_rgba(242,210,255,0.15)]",
         className,
       )}
     >

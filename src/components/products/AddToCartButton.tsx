@@ -23,8 +23,8 @@ export function AddToCartButton({
         window.setTimeout(() => setAdded(false), 1800);
       }}
       className={cn(
-        "flex items-center gap-2 rounded-full py-2.5 pr-5 pl-4 text-xs font-bold transition-colors",
-        added ? "bg-green-600 text-white" : "bg-white text-black hover:bg-white/90",
+        "flex items-center gap-2 rounded-full py-2.5 pr-5 pl-4 text-xs font-bold transition-all",
+        added ? "bg-green-600 text-white shadow-[0_0_15px_rgba(242,210,255,0.25)]" : "bg-gradient-to-r from-white to-white/80 text-black hover:from-white hover:to-white hover:shadow-[0_0_20px_rgba(242,210,255,0.3)]",
         className,
       )}
     >

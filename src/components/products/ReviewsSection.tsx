@@ -47,7 +47,7 @@ export function ReviewsSection({ slug }: { slug: string }) {
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-8 rounded-2xl bg-zinc-900/80 p-6">
+      <form onSubmit={handleSubmit} className="mt-8 rounded-2xl bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 p-6 border border-white/5 backdrop-blur">
         <h3 className="text-sm font-semibold text-white">Write a review</h3>
         <div className="mt-4">
           <StarRating value={rating} onChange={setRating} size="lg" />
@@ -58,7 +58,7 @@ export function ReviewsSection({ slug }: { slug: string }) {
           onChange={(event) => setName(event.target.value)}
           placeholder="Your name"
           required
-          className="mt-4 w-full rounded-lg border border-white/20 bg-black/40 px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-red-500 focus:outline-none"
+          className="mt-4 w-full rounded-lg border border-white/20 bg-black/40 px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-teal-500 focus:outline-none"
         />
         <textarea
           value={comment}
@@ -66,12 +66,12 @@ export function ReviewsSection({ slug }: { slug: string }) {
           placeholder="Share your thoughts..."
           required
           rows={3}
-          className="mt-3 w-full rounded-lg border border-white/20 bg-black/40 px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-red-500 focus:outline-none"
+          className="mt-3 w-full rounded-lg border border-white/20 bg-black/40 px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-teal-500 focus:outline-none"
         />
         <button
           type="submit"
           disabled={rating === 0}
-          className="mt-4 rounded-full bg-red-600 px-5 py-2 text-xs font-bold text-white transition-colors hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-40"
+          className="mt-4 rounded-full bg-gradient-to-r from-teal-600 to-teal-500 px-5 py-2 text-xs font-bold text-white transition-all hover:shadow-[0_0_20px_rgba(242,210,255,0.3)] disabled:cursor-not-allowed disabled:opacity-40"
         >
           Submit review
         </button>

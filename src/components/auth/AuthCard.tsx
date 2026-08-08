@@ -9,7 +9,7 @@ type Mode = "login" | "signup";
 const IMAGE_CLIP = "polygon(0 0, 100% 0, 82% 100%, 0 100%)";
 
 const inputClass =
-  "w-full rounded-lg border border-white/15 bg-black/40 px-4 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-red-500 focus:outline-none";
+  "w-full rounded-lg border border-white/15 bg-black/40 px-4 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-teal-500 focus:outline-none";
 
 export function AuthCard({ mode }: { mode: Mode }) {
   const isSignup = mode === "signup";
@@ -56,12 +56,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
 
           <div className="relative z-10 flex h-full flex-col justify-between p-8">
             <div className="flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-red-600 text-xs font-bold">
-                  K
-                </span>
-                <span className="text-sm font-semibold text-white">keynex</span>
-              </Link>
+              <div></div>
               <Link
                 href={isSignup ? "/login" : "/signup"}
                 className="rounded-full border border-white/30 px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white hover:text-black"
@@ -82,12 +77,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
         {/* Form panel */}
         <div className="flex w-full flex-col justify-center px-6 py-12 sm:px-12 md:w-[55%]">
           <div className="mx-auto w-full max-w-sm">
-            <div className="mb-6 flex items-center gap-2 md:hidden">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">
-                K
-              </span>
-              <span className="text-sm font-semibold text-white">keynex</span>
-            </div>
+            <div className="mb-6 md:hidden"></div>
 
             <h1 className="text-2xl font-semibold text-white">
               {isSignup ? "Create your account" : "Welcome back"}
@@ -145,7 +135,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
                   />
                 )}
 
-                {error && <p className="text-xs text-red-500">{error}</p>}
+                {error && <p className="text-xs text-teal-500">{error}</p>}
 
                 {!isSignup && (
                   <div className="text-right">
@@ -161,7 +151,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
 
                 <button
                   type="submit"
-                  className="w-full rounded-full bg-red-600 py-3 text-sm font-bold text-white transition-colors hover:bg-red-500"
+                  className="w-full rounded-full bg-gradient-to-r from-teal-600 to-teal-500 py-3 text-sm font-bold text-white transition-all hover:shadow-[0_0_20px_rgba(242,210,255,0.3)]"
                 >
                   {isSignup ? "Sign up" : "Log in"}
                 </button>
@@ -177,7 +167,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
                   onClick={() =>
                     setError("Google sign-in isn't connected in this demo — try email instead.")
                   }
-                  className="flex w-full items-center justify-center gap-2 rounded-full border border-white/20 py-3 text-sm font-medium text-white transition-colors hover:border-white/50"
+                  className="flex w-full items-center justify-center gap-2 rounded-full border border-white/20 py-3 text-sm font-medium text-white transition-all hover:border-teal-500/50 hover:bg-black/30 hover:shadow-[0_0_12px_rgba(242,210,255,0.15)]"
                 >
                   <span
                     aria-hidden
@@ -192,7 +182,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
                   {isSignup ? "Already have an account? " : "Don't have an account? "}
                   <Link
                     href={isSignup ? "/login" : "/signup"}
-                    className="font-semibold text-red-500 hover:underline"
+                    className="font-semibold text-teal-500 hover:underline"
                   >
                     {isSignup ? "Log in" : "Sign up"}
                   </Link>

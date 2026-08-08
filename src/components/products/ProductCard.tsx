@@ -46,7 +46,7 @@ export function ProductCard({
 
         <div className="relative z-[1] mt-4">
           <p className="text-lg font-semibold text-white">{product.name}</p>
-          <p className="mt-1 text-sm font-semibold text-red-500">${product.price},-</p>
+          <p className="mt-1 text-sm font-semibold text-teal-500">${product.price},-</p>
           <div className="mt-2 flex items-center gap-2">
             <StarRating value={avgRating} />
             <span className="text-xs text-white/40">({product.reviews.length})</span>
@@ -56,7 +56,7 @@ export function ProductCard({
 
       <label
         className={cn(
-          "relative z-10 flex items-center gap-2 border-t border-white/10 px-6 py-3 text-xs text-white/60",
+          "relative z-10 flex items-center gap-2 border-t border-white/10 px-6 py-3 text-xs text-white/60 transition-colors hover:border-t-[#F2D2FF]/30 hover:bg-[#F2D2FF]/5",
           compareDisabled && !compareChecked && "opacity-40",
         )}
       >
@@ -65,7 +65,7 @@ export function ProductCard({
           checked={compareChecked}
           disabled={compareDisabled && !compareChecked}
           onChange={(event) => onCompareChange(event.target.checked)}
-          className="h-4 w-4 accent-red-600"
+          className="h-4 w-4 accent-teal-600"
         />
         Compare
       </label>
