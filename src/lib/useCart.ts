@@ -3,7 +3,7 @@
 import { useCallback, useSyncExternalStore } from "react";
 import { PRODUCTS } from "./products";
 
-const STORAGE_KEY = "keynet-cart";
+const STORAGE_KEY = "keynex-cart";
 
 export type CartItem = { slug: string; quantity: number };
 

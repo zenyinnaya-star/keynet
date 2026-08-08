@@ -3,7 +3,7 @@
 import { useCallback, useSyncExternalStore } from "react";
 import { getProductBySlug, type Review } from "./products";
 
-const STORAGE_PREFIX = "keynet-reviews-";
+const STORAGE_PREFIX = "keynex-reviews-";
 
 const listeners = new Map<string, Set<() => void>>();
 const cachedExtra = new Map<string, Review[]>();

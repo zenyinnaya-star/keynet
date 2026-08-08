@@ -2,7 +2,7 @@
 
 import { useCallback, useSyncExternalStore } from "react";
 
-const STORAGE_KEY = "keynet-wishlist";
+const STORAGE_KEY = "keynex-wishlist";
 const listeners = new Set<() => void>();
 let cachedIds: string[] | null = null;
 

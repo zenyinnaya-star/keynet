@@ -14,7 +14,7 @@ export function ShopHeader() {
         <span className="flex h-9 w-9 items-center justify-center rounded-full bg-red-600 text-sm font-bold">
           K
         </span>
-        <span className="hidden text-sm font-semibold tracking-wide sm:inline">keynet</span>
+        <span className="hidden text-sm font-semibold tracking-wide sm:inline">keynex</span>
       </Link>
 
       <nav className="hidden items-center gap-8 text-xs font-medium tracking-widest text-white/80 md:flex">

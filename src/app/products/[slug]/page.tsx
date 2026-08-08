@@ -20,7 +20,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const product = getProductBySlug(slug);
-  return { title: product ? `${product.name} | keynet` : "Product | keynet" };
+  return { title: product ? `${product.name} | keynex` : "Product | keynex" };
 }
 
 export default async function ProductDetailPage({
@@ -106,7 +106,7 @@ export default async function ProductDetailPage({
       </div>
 
       <div className="px-6 py-10 text-[11px] text-white/40 uppercase sm:px-10">
-        © 2026 keynet — All rights reserved
+        © 2026 keynex — All rights reserved
       </div>
     </div>
   );

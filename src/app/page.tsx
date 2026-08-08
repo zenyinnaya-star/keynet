@@ -113,7 +113,7 @@ export default function Home() {
             K
           </span>
           <span className="hidden text-sm font-semibold tracking-wide sm:inline">
-            keynet
+            keynex
           </span>
         </Link>
 
@@ -235,7 +235,7 @@ export default function Home() {
                 "mt-2 text-7xl leading-none text-red-600 drop-shadow-[0_0_25px_rgba(220,20,20,0.45)] sm:text-8xl",
               )}
             >
-              keynet
+              keynex
             </h1>
 
             <div className="mt-6 flex items-center gap-4">
@@ -295,7 +295,7 @@ export default function Home() {
       {/* Bottom bar */}
       <div className="relative z-20 flex items-center justify-between px-6 py-6 text-white/50 sm:px-10">
         <p className="text-[11px] uppercase tracking-wider">
-          © 2026 keynet
+          © 2026 keynex
           <br />
           All rights are reserved
         </p>

@@ -11,7 +11,7 @@ export function HeritageTimeline() {
             K
           </span>
           <span className="hidden text-sm font-semibold tracking-wide sm:inline">
-            keynet
+            keynex
           </span>
         </Link>
         <nav className="hidden items-center gap-8 text-xs font-medium tracking-widest text-white/80 md:flex">
@@ -37,7 +37,7 @@ export function HeritageTimeline() {
             </p>
             <div className="mt-6 h-px w-16 bg-red-600" />
             <p className="mt-6 text-sm leading-7 text-white/70 sm:text-[15px]">
-              keynet began as a shared frustration: everyday audio gear that
+              keynex began as a shared frustration: everyday audio gear that
               looked disposable and sounded worse. Co-founders Zabdiel and
               Santiago spent their evenings after class sketching product
               concepts on whatever paper was closest — napkins, the backs of
@@ -55,7 +55,7 @@ export function HeritageTimeline() {
               * * *
             </p>
             <h2 className="mt-4 text-center text-2xl font-bold tracking-tight uppercase sm:text-3xl">
-              The Founding of Keynet
+              The Founding of Keynex
             </h2>
           </Reveal>
 
@@ -85,7 +85,7 @@ export function HeritageTimeline() {
           <Reveal delayMs={100} className="order-2 flex justify-center lg:order-1">
             <Image
               src="/founders/zabdiel.webp"
-              alt="Zabdiel, co-founder of keynet"
+              alt="Zabdiel, co-founder of keynex"
               width={1151}
               height={1523}
               sizes="(min-width: 1024px) 260px, 220px"
@@ -102,14 +102,14 @@ export function HeritageTimeline() {
               Zabdiel handled the parts most founders dread — sourcing,
               testing, the unglamorous work of making sure a product
               actually works before it ships. Santiago pushed the brand: the
-              way keynet sounds, looks, and talks to the people who wear it.
+              way keynex sounds, looks, and talks to the people who wear it.
               Neither background was in consumer electronics. What they
               shared was a refusal to launch anything they wouldn&apos;t use
               themselves.
             </p>
             <p className="mt-4 text-sm leading-7 text-white/70 sm:text-[15px]">
               That tension — one partner obsessed with function, the other
-              with feel — is still the reason keynet products get argued
+              with feel — is still the reason keynex products get argued
               over in every internal review before they reach a single
               customer.
             </p>
@@ -118,7 +118,7 @@ export function HeritageTimeline() {
           <Reveal delayMs={300} className="order-3 flex justify-center">
             <Image
               src="/founders/santiago.webp"
-              alt="Santiago, co-founder of keynet"
+              alt="Santiago, co-founder of keynex"
               width={2257}
               height={2959}
               sizes="(min-width: 1024px) 260px, 220px"
@@ -151,12 +151,12 @@ export function HeritageTimeline() {
             </p>
             <div className="mx-auto mt-6 h-px w-16 bg-red-600" />
             <p className="mt-6 text-sm leading-7 text-white/70 sm:text-[15px]">
-              Misty joined keynet as its third full-time hire and became CEO
+              Misty joined keynex as its third full-time hire and became CEO
               not long after, taking over day-to-day leadership so the
               founders could focus on product. Her approach has been to keep
               the company small on purpose — fewer releases, held to a
               higher bar, rather than a catalog padded out for its own sake.
-              Under her leadership keynet expanded from a single headphone
+              Under her leadership keynex expanded from a single headphone
               line into the beginnings of a real catalog, without losing the
               two-person, get-it-right instinct the company was built on.
             </p>
@@ -173,8 +173,8 @@ export function HeritageTimeline() {
         </div>
       </section>
 
-      <div className="px-6 py-10 text-[11px] text-white/40 uppercase sm:px-10">
-        © 2026 keynet — All rights reserved
+        <div className="px-6 py-10 text-[11px] text-white/40 uppercase sm:px-10">
+        © 2026 keynex — All rights reserved
       </div>
     </div>
   );

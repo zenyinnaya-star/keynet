@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AuthCard } from "@/components/auth/AuthCard";
 
 export const metadata: Metadata = {
-  title: "Log In | keynet",
+  title: "Log In | keynex",
 };
 
 export default function LoginPage() {

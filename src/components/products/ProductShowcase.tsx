@@ -55,7 +55,7 @@ export function ProductShowcase() {
           <div className="relative overflow-hidden rounded-3xl bg-zinc-900/80 pl-8 sm:pl-10">
             <div className="absolute inset-y-0 left-0 w-8 bg-red-600 sm:w-10">
               <span className="absolute top-1/2 left-1/2 origin-center -translate-x-1/2 -translate-y-1/2 -rotate-90 text-[10px] font-semibold tracking-[0.3em] whitespace-nowrap text-white/80 uppercase">
-                Welcome to keynet
+                Welcome to keynex
               </span>
             </div>
 
@@ -153,7 +153,7 @@ export function ProductShowcase() {
       </div>
 
       <div className="px-6 pb-10 text-[11px] text-white/40 uppercase sm:px-10">
-        © 2026 keynet — All rights reserved
+        © 2026 keynex — All rights reserved
       </div>
     </div>
   );

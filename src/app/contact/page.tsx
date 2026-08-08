@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import WorldMap from "@/components/ui/world-map";
 
 export const metadata: Metadata = {
-  title: "Contact | keynet",
+  title: "Contact | keynex",
 };
 
 const MAP_DOTS = [
@@ -40,7 +40,7 @@ export default function ContactPage() {
             </div>
             <div>
               <p className="text-xs tracking-wide text-white/40 uppercase">E-mail</p>
-              <p className="mt-1 text-sm text-white">hello@keynet.com</p>
+              <p className="mt-1 text-sm text-white">hello@keynex.com</p>
             </div>
           </div>
 
@@ -68,7 +68,7 @@ export default function ContactPage() {
             Wherever you are, <span className="text-white/40">we&apos;re listening.</span>
           </p>
           <p className="mx-auto mt-3 max-w-md text-center text-sm text-white/60">
-            keynet ships and supports customers worldwide — reach out from anywhere.
+            keynex ships and supports customers worldwide — reach out from anywhere.
           </p>
           <div className="mt-8">
             <WorldMap dots={MAP_DOTS} />
@@ -77,7 +77,7 @@ export default function ContactPage() {
       </div>
 
       <div className="px-6 pb-10 text-[11px] text-white/40 uppercase sm:px-10">
-        © 2026 keynet — All rights reserved
+        © 2026 keynex — All rights reserved
       </div>
     </div>
   );

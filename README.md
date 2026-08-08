@@ -1,4 +1,4 @@
-# keynet
+# keynex
 
 A Next.js web application starter — App Router, TypeScript, and Tailwind CSS.
 

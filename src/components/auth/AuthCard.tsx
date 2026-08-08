@@ -43,7 +43,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
         <div className="relative hidden w-[45%] shrink-0 md:block">
           <Image
             src="/gamers-login.webp"
-            alt="Two keynet users celebrating at their setup"
+            alt="Two keynex users celebrating at their setup"
             fill
             sizes="(min-width: 768px) 45vw, 0px"
             style={{ clipPath: IMAGE_CLIP, objectFit: "cover" }}
@@ -60,7 +60,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-red-600 text-xs font-bold">
                   K
                 </span>
-                <span className="text-sm font-semibold text-white">keynet</span>
+                <span className="text-sm font-semibold text-white">keynex</span>
               </Link>
               <Link
                 href={isSignup ? "/login" : "/signup"}
@@ -86,7 +86,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-red-600 text-xs font-bold text-white">
                 K
               </span>
-              <span className="text-sm font-semibold text-white">keynet</span>
+              <span className="text-sm font-semibold text-white">keynex</span>
             </div>
 
             <h1 className="text-2xl font-semibold text-white">
@@ -94,8 +94,8 @@ export function AuthCard({ mode }: { mode: Mode }) {
             </h1>
             <p className="mt-1 text-sm text-white/50">
               {isSignup
-                ? "Join keynet to track orders, wishlist, and reviews."
-                : "Log in to your keynet account."}
+                ? "Join keynex to track orders, wishlist, and reviews."
+                : "Log in to your keynex account."}
             </p>
 
             {success ? (
@@ -103,7 +103,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
                 {isSignup ? "Account created." : "Signed in."} This is a demo form — it isn&apos;t
                 connected to a real account system, so nothing was actually stored.
                 <Link href="/" className="mt-3 block font-semibold text-white underline">
-                  Continue to keynet →
+                  Continue to keynex →
                 </Link>
               </div>
             ) : (
