@@ -13,7 +13,9 @@ export function CompareModal({
 }) {
   if (products.length === 0) return null;
 
-  const specLabels = products[0].specs.map((spec) => spec.label);
+  const specLabels = Array.from(
+    new Set(products.flatMap((product) => product.specs.map((spec) => spec.label))),
+  );
 
   return (
     <div
@@ -43,15 +45,19 @@ export function CompareModal({
                 <th className="w-28" />
                 {products.map((product) => (
                   <th key={product.slug} className="px-3 pb-4 text-center">
-                    <Image
-                      src="/hero-headphones-3d.webp"
-                      alt={`${product.name} headphones`}
-                      width={140}
-                      height={165}
-                      sizes="120px"
-                      style={{ filter: product.filter }}
-                      className="mx-auto h-20 w-auto object-contain"
-                    />
+                    <div className="mx-auto flex h-20 items-center justify-center">
+                      {product.image && (
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          width={product.imageWidth}
+                          height={product.imageHeight}
+                          sizes="120px"
+                          style={{ filter: product.filter }}
+                          className="h-full w-auto object-contain"
+                        />
+                      )}
+                    </div>
                     <p className="mt-2 font-semibold text-white">{product.name}</p>
                   </th>
                 ))}

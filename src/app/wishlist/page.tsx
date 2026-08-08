@@ -42,15 +42,19 @@ export default function WishlistPage() {
                     <WishlistButton slug={product.slug} />
                   </div>
                   <Link href={`/products/${product.slug}`} className="block">
-                    <Image
-                      src="/hero-headphones-3d.webp"
-                      alt={`${product.name} headphones`}
-                      width={200}
-                      height={235}
-                      sizes="160px"
-                      style={{ filter: product.filter }}
-                      className="mx-auto h-32 w-auto object-contain"
-                    />
+                    <div className="mx-auto flex h-32 items-center justify-center">
+                      {product.image && (
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          width={product.imageWidth}
+                          height={product.imageHeight}
+                          sizes="160px"
+                          style={{ filter: product.filter }}
+                          className="h-full w-auto object-contain"
+                        />
+                      )}
+                    </div>
                     <p className="mt-4 text-center text-lg font-semibold text-white">
                       {product.name}
                     </p>

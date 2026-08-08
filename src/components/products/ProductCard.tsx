@@ -32,16 +32,18 @@ export function ProductCard({
           {product.watermark}
         </span>
 
-        <div className="relative z-[1] flex justify-center">
-          <Image
-            src="/hero-headphones-3d.webp"
-            alt={`${product.name} headphones`}
-            width={280}
-            height={329}
-            sizes="220px"
-            style={{ filter: product.filter }}
-            className="h-40 w-auto object-contain sm:h-48"
-          />
+        <div className="relative z-[1] flex h-40 items-center justify-center sm:h-48">
+          {product.image && (
+            <Image
+              src={product.image}
+              alt={product.name}
+              width={product.imageWidth}
+              height={product.imageHeight}
+              sizes="220px"
+              style={{ filter: product.filter }}
+              className="h-full w-auto object-contain"
+            />
+          )}
         </div>
 
         <div className="relative z-[1] mt-4">

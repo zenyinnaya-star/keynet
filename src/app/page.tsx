@@ -21,11 +21,17 @@ const SOCIAL_LINKS = [
   { href: "#", label: "Twitter", initials: "X" },
 ];
 
-const SLIDES = [
+const SLIDES: {
+  eyebrow: string;
+  productName: string;
+  image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  description: string;
+}[] = [
   {
     eyebrow: "New Arrival",
     productName: "Keynex TypeFlow",
-    image: "/hero-headphones-3d.webp",
     description:
       "Keynex TypeFlow delivers smooth, responsive typing with a clean, minimalist design. Comfortable, consistent, and easy to use, it keeps your workflow steady whether you're studying, working, or typing through your day.",
   },
@@ -33,6 +39,8 @@ const SLIDES = [
     eyebrow: "Most Popular",
     productName: "Keynex Echo G3",
     image: "/hero-headphones-3d.webp",
+    imageWidth: 840,
+    imageHeight: 985,
     description:
       "The Keynex Echo G3 delivers warm, immersive audio in a sleek, lightweight design. With its minimalist look and all‑day comfort, it's the perfect companion for studying, gaming, or escaping into your favorite sounds.",
   },
@@ -40,13 +48,17 @@ const SLIDES = [
     eyebrow: "Everyday Comfort",
     productName: "Keynex Comfort Pro",
     image: "/hero-headphones-3d.webp",
+    imageWidth: 840,
+    imageHeight: 985,
     description:
       "Keynex Comfort Pro is built for all‑day ease, blending soft cushioning with a lightweight frame for effortless wear. Its clear, balanced audio makes every call, song, and moment feel smooth and comfortable.",
   },
   {
     eyebrow: "Effortless Clarity",
     productName: "Keynex Ultra View X",
-    image: "/hero-headphones-3d.webp",
+    image: "/ultra-view-x-monitor.webp",
+    imageWidth: 828,
+    imageHeight: 758,
     description:
       "Keynex UltraView X delivers sharp detail, rich color, and a smooth viewing experience inside a refined, modern frame. Built for clarity and comfort, it elevates your workspace with premium visuals that stay crisp whether you're working, creating, or unwinding.",
   },
@@ -254,17 +266,21 @@ export default function Home() {
           </div>
 
           {/* Hero product image */}
-          <div className="relative flex items-center justify-center lg:justify-end">
+          <div className="relative flex h-80 items-center justify-center sm:h-[26rem] lg:justify-end">
             <div className="absolute h-72 w-72 rounded-full bg-gradient-to-br from-blue-200/30 to-pink-100/30 blur-3xl sm:h-96 sm:w-96" />
-            <Image
-              src={slide.image}
-              alt={`${slide.productName} product image`}
-              width={840}
-              height={985}
-              sizes="(min-width: 640px) 360px, 280px"
-              priority
-              className="animate-float relative h-80 w-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)] transition-transform duration-500 hover:scale-105 sm:h-[26rem]"
-            />
+            {slide.image && (
+              <div key={activeSlide} className="animate-fade-in-up">
+                <Image
+                  src={slide.image}
+                  alt={`${slide.productName} product image`}
+                  width={slide.imageWidth}
+                  height={slide.imageHeight}
+                  sizes="(min-width: 640px) 360px, 280px"
+                  priority
+                  className="animate-float relative h-80 w-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)] transition-transform duration-500 hover:scale-105 sm:h-[26rem]"
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

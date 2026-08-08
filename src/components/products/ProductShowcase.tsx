@@ -73,14 +73,12 @@ export function ProductShowcase() {
                     href={`/products/${product.slug}`}
                     className="text-xs text-white/50 transition-colors hover:text-white"
                   >
-                    Shop / Headphones
+                    Shop / {product.name}
                   </Link>
                   <p className="text-sm font-semibold text-white/70">${product.price},-</p>
                 </div>
 
-                <h2 className="text-3xl font-semibold sm:text-4xl">
-                  Headphones — {product.name}
-                </h2>
+                <h2 className="text-3xl font-semibold sm:text-4xl">{product.name}</h2>
                 <p className="mt-3 text-2xl font-bold text-teal-500">${product.price},-</p>
                 <p className="mt-3 max-w-sm text-sm leading-6 text-white/60">
                   {product.tagline}
@@ -111,17 +109,19 @@ export function ProductShowcase() {
                 </div>
               </div>
 
-              <div className="relative z-10 flex justify-center lg:justify-end">
+              <div className="relative z-10 flex h-72 items-center justify-center sm:h-80 lg:justify-end">
                 <div key={activeIndex} className="animate-fade-in-up">
-                  <Image
-                    src="/hero-headphones-3d.webp"
-                    alt={`${product.name} headphones`}
-                    width={420}
-                    height={493}
-                    sizes="(min-width: 1024px) 380px, 300px"
-                    style={{ filter: product.filter }}
-                    className="animate-float h-72 w-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)] sm:h-80"
-                  />
+                  {product.image && (
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      width={product.imageWidth}
+                      height={product.imageHeight}
+                      sizes="(min-width: 1024px) 380px, 300px"
+                      style={{ filter: product.filter }}
+                      className="animate-float h-72 w-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)] sm:h-80"
+                    />
+                  )}
                 </div>
               </div>
             </div>

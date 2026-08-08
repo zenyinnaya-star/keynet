@@ -34,15 +34,19 @@ export default function CartPage() {
                 if (!product) return null;
                 return (
                   <div key={item.slug} className="flex flex-wrap items-center gap-4 py-6">
-                    <Image
-                      src="/hero-headphones-3d.webp"
-                      alt={`${product.name} headphones`}
-                      width={120}
-                      height={141}
-                      sizes="80px"
-                      style={{ filter: product.filter }}
-                      className="h-16 w-auto object-contain"
-                    />
+                    <div className="flex h-16 w-16 shrink-0 items-center justify-center">
+                      {product.image && (
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          width={product.imageWidth}
+                          height={product.imageHeight}
+                          sizes="64px"
+                          style={{ filter: product.filter }}
+                          className="h-full w-auto object-contain"
+                        />
+                      )}
+                    </div>
                     <div className="min-w-0 flex-1">
                       <Link
                         href={`/products/${product.slug}`}

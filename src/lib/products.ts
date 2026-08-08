@@ -15,6 +15,9 @@ export type Product = {
   slug: string;
   name: string;
   price: number;
+  image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   watermark: string;
   filter: string;
   tagline: string;
@@ -23,11 +26,16 @@ export type Product = {
   reviews: Review[];
 };
 
+const HEADPHONE_IMAGE = "/hero-headphones-3d.webp";
+const HEADPHONE_IMAGE_SIZE = { imageWidth: 840, imageHeight: 985 };
+
 export const PRODUCTS: Product[] = [
   {
     slug: "midnight-black",
     name: "Midnight Black",
     price: 249,
+    image: HEADPHONE_IMAGE,
+    ...HEADPHONE_IMAGE_SIZE,
     watermark: "MIDNIGHT",
     filter: "brightness(0.4) contrast(1.3) saturate(0.9)",
     tagline: "The original. Studio-tuned and built to disappear into the background.",
@@ -70,6 +78,8 @@ export const PRODUCTS: Product[] = [
     slug: "studio-white",
     name: "Studio White",
     price: 249,
+    image: HEADPHONE_IMAGE,
+    ...HEADPHONE_IMAGE_SIZE,
     watermark: "STUDIO",
     filter: "brightness(1.55) contrast(0.85) saturate(0.3)",
     tagline: "Same tuning, a brighter build for the studio and everyday desk setup.",
@@ -103,6 +113,8 @@ export const PRODUCTS: Product[] = [
     slug: "slate-grey",
     name: "Slate Grey",
     price: 249,
+    image: HEADPHONE_IMAGE,
+    ...HEADPHONE_IMAGE_SIZE,
     watermark: "SLATE",
     filter: "sepia(0.2) hue-rotate(190deg) saturate(1.1) brightness(0.95)",
     tagline: "A cooler, understated finish for everyday carry.",
@@ -144,6 +156,8 @@ export const PRODUCTS: Product[] = [
     slug: "crimson-red",
     name: "Crimson Red",
     price: 269,
+    image: HEADPHONE_IMAGE,
+    ...HEADPHONE_IMAGE_SIZE,
     watermark: "CRIMSON",
     filter: "sepia(1) saturate(4.5) hue-rotate(-52deg) brightness(0.85)",
     tagline: "A limited-run colorway for a bolder look.",
@@ -170,6 +184,75 @@ export const PRODUCTS: Product[] = [
         rating: 4,
         comment: "Battery life is the shortest of the four colorways but still gets me through a full day.",
         date: "2026-05-30",
+      },
+    ],
+  },
+  {
+    slug: "typeflow",
+    name: "Keynex TypeFlow",
+    price: 89,
+    watermark: "TYPEFLOW",
+    filter: "none",
+    tagline: "Smooth, responsive typing with a clean, minimalist design.",
+    description:
+      "Our first keyboard: a full-size layout tuned for consistent, comfortable typing, whether you're studying, working, or typing through your day.",
+    specs: [
+      { label: "Switch type", value: "Low-profile mechanical" },
+      { label: "Backlighting", value: "White backlight" },
+      { label: "Layout", value: "Full-size, 104-key" },
+      { label: "Connectivity", value: "USB-C, wired" },
+      { label: "Weight", value: "850g" },
+    ],
+    reviews: [
+      {
+        id: "tf-1",
+        author: "Chris B.",
+        rating: 5,
+        comment: "Quiet enough for calls, still feels great to type on. Exactly what I wanted for the office.",
+        date: "2026-07-02",
+      },
+      {
+        id: "tf-2",
+        author: "Elena M.",
+        rating: 4,
+        comment: "Solid everyday keyboard. Wish it came in a smaller tenkeyless size too.",
+        date: "2026-06-20",
+      },
+    ],
+  },
+  {
+    slug: "ultra-view-x",
+    name: "Keynex Ultra View X",
+    price: 399,
+    image: "/ultra-view-x-monitor.webp",
+    imageWidth: 828,
+    imageHeight: 758,
+    watermark: "ULTRAVIEW",
+    filter: "none",
+    tagline: "Sharp detail, rich color, and a smooth viewing experience.",
+    description:
+      "Our first display: a 27-inch panel in a refined, modern frame, built for clarity and comfort whether you're working, creating, or unwinding.",
+    specs: [
+      { label: "Screen size", value: "27 inch" },
+      { label: "Resolution", value: "4K UHD (3840x2160)" },
+      { label: "Panel type", value: "IPS" },
+      { label: "Refresh rate", value: "60Hz" },
+      { label: "Connectivity", value: "USB-C, HDMI" },
+    ],
+    reviews: [
+      {
+        id: "uvx-1",
+        author: "Priya N.",
+        rating: 5,
+        comment: "Colors look great out of the box, barely needed to calibrate anything.",
+        date: "2026-07-10",
+      },
+      {
+        id: "uvx-2",
+        author: "Marcus L.",
+        rating: 4,
+        comment: "Great panel for the price. Would love a higher refresh rate option down the line.",
+        date: "2026-06-28",
       },
     ],
   },
