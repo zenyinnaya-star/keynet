@@ -1,22 +1,16 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { ShopHeader } from "@/components/products/ShopHeader";
 import { Reveal } from "./Reveal";
 
 export function HeritageTimeline() {
   return (
     <div className="min-h-screen bg-black text-white">
-      <header className="flex items-center justify-between px-6 py-6 sm:px-10">
-        <div></div>
-        <nav className="hidden items-center gap-8 text-xs font-medium tracking-widest text-white/80 md:flex">
-          <Link href="/" className="uppercase transition-colors hover:text-white">
-            Home
-          </Link>
-          <Link href="/products" className="uppercase transition-colors hover:text-white">
-            Our Products
-          </Link>
-          <span className="uppercase text-white">Heritage</span>
-        </nav>
-      </header>
+      <ShopHeader />
 
       {/* Section 1 — The Founding */}
       <section className="bg-grain relative overflow-hidden bg-[#141414] py-20 sm:py-28">

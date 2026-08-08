@@ -1,29 +1,96 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCart } from "@/lib/useCart";
 import { useWishlist } from "@/lib/useWishlist";
+import { cn } from "@/lib/utils";
 
 export function ShopHeader() {
+  const pathname = usePathname();
   const { count: cartCount } = useCart();
   const { count: wishlistCount } = useWishlist();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="flex items-center justify-between px-6 py-6 sm:px-10">
+    <header
+      className={cn(
+        "sticky top-0 z-20 flex items-center justify-between gap-6 px-6 py-6 transition-all duration-300 sm:px-10",
+        scrolled
+          ? "border-b border-white/10 bg-black/70 py-4 shadow-lg shadow-black/30 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent",
+      )}
+    >
       <div></div>
 
       <nav className="hidden items-center gap-8 text-xs font-medium tracking-widest text-white/80 md:flex">
-        <Link href="/" className="uppercase transition-colors hover:text-white">
+        <Link
+          href="/"
+          className={cn(
+            "group relative py-1 uppercase transition-colors hover:text-white",
+            pathname === "/" && "text-white",
+          )}
+        >
           Home
+          <span
+            className={cn(
+              "absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-teal-500 transition-transform duration-300 group-hover:scale-x-100",
+              pathname === "/" && "scale-x-100",
+            )}
+          />
         </Link>
-        <Link href="/products" className="uppercase transition-colors hover:text-white">
+        <Link
+          href="/products"
+          className={cn(
+            "group relative py-1 uppercase transition-colors hover:text-white",
+            pathname.startsWith("/products") && "text-white",
+          )}
+        >
           Our Products
+          <span
+            className={cn(
+              "absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-teal-500 transition-transform duration-300 group-hover:scale-x-100",
+              pathname.startsWith("/products") && "scale-x-100",
+            )}
+          />
         </Link>
-        <Link href="/heritage" className="uppercase transition-colors hover:text-white">
+        <Link
+          href="/heritage"
+          className={cn(
+            "group relative py-1 uppercase transition-colors hover:text-white",
+            pathname === "/heritage" && "text-white",
+          )}
+        >
           Heritage
+          <span
+            className={cn(
+              "absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-teal-500 transition-transform duration-300 group-hover:scale-x-100",
+              pathname === "/heritage" && "scale-x-100",
+            )}
+          />
         </Link>
-        <Link href="/contact" className="uppercase transition-colors hover:text-white">
+        <Link
+          href="/contact"
+          className={cn(
+            "group relative py-1 uppercase transition-colors hover:text-white",
+            pathname === "/contact" && "text-white",
+          )}
+        >
           Contacts
+          <span
+            className={cn(
+              "absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-teal-500 transition-transform duration-300 group-hover:scale-x-100",
+              pathname === "/contact" && "scale-x-100",
+            )}
+          />
         </Link>
       </nav>
 
