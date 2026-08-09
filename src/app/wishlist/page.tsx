@@ -43,7 +43,7 @@ export default function WishlistPage() {
                   </div>
                   <Link href={`/products/${product.slug}`} className="block">
                     <div className="mx-auto flex h-32 items-center justify-center">
-                      {product.image && (
+                      {product.image ? (
                         <Image
                           src={product.image}
                           alt={product.name}
@@ -53,6 +53,10 @@ export default function WishlistPage() {
                           style={{ filter: product.filter }}
                           className="h-full w-auto object-contain"
                         />
+                      ) : (
+                        <span className="text-[10px] font-medium tracking-widest text-white/30 uppercase">
+                          Image coming soon
+                        </span>
                       )}
                     </div>
                     <p className="mt-4 text-center text-lg font-semibold text-white">

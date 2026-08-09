@@ -46,7 +46,7 @@ export function CompareModal({
                 {products.map((product) => (
                   <th key={product.slug} className="px-3 pb-4 text-center">
                     <div className="mx-auto flex h-20 items-center justify-center">
-                      {product.image && (
+                      {product.image ? (
                         <Image
                           src={product.image}
                           alt={product.name}
@@ -56,6 +56,10 @@ export function CompareModal({
                           style={{ filter: product.filter }}
                           className="h-full w-auto object-contain"
                         />
+                      ) : (
+                        <span className="text-[9px] font-medium tracking-widest text-white/30 uppercase">
+                          Soon
+                        </span>
                       )}
                     </div>
                     <p className="mt-2 font-semibold text-white">{product.name}</p>

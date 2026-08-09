@@ -50,7 +50,7 @@ export default async function ProductDetailPage({
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="relative flex h-80 items-center justify-center sm:h-96">
             <div className="absolute h-64 w-64 rounded-full bg-teal-600/10 blur-3xl" />
-            {product.image && (
+            {product.image ? (
               <Image
                 src={product.image}
                 alt={product.name}
@@ -61,6 +61,10 @@ export default async function ProductDetailPage({
                 priority
                 className="relative h-80 w-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)] sm:h-96"
               />
+            ) : (
+              <span className="relative text-xs font-medium tracking-widest text-white/30 uppercase">
+                Image coming soon
+              </span>
             )}
           </div>
 

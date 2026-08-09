@@ -35,7 +35,7 @@ export default function CartPage() {
                 return (
                   <div key={item.slug} className="flex flex-wrap items-center gap-4 py-6">
                     <div className="flex h-16 w-16 shrink-0 items-center justify-center">
-                      {product.image && (
+                      {product.image ? (
                         <Image
                           src={product.image}
                           alt={product.name}
@@ -45,6 +45,10 @@ export default function CartPage() {
                           style={{ filter: product.filter }}
                           className="h-full w-auto object-contain"
                         />
+                      ) : (
+                        <span className="text-center text-[8px] font-medium tracking-widest text-white/30 uppercase">
+                          Soon
+                        </span>
                       )}
                     </div>
                     <div className="min-w-0 flex-1">

@@ -111,7 +111,7 @@ export function ProductShowcase() {
 
               <div className="relative z-10 flex h-72 items-center justify-center sm:h-80 lg:justify-end">
                 <div key={activeIndex} className="animate-fade-in-up">
-                  {product.image && (
+                  {product.image ? (
                     <Image
                       src={product.image}
                       alt={product.name}
@@ -121,6 +121,13 @@ export function ProductShowcase() {
                       style={{ filter: product.filter }}
                       className="animate-float h-72 w-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)] sm:h-80"
                     />
+                  ) : (
+                    <div
+                      aria-hidden
+                      className="animate-float flex h-72 w-56 items-center justify-center rounded-3xl border border-white/10 bg-white/5 text-xs font-medium tracking-widest text-white/30 uppercase backdrop-blur-sm sm:h-80 sm:w-64"
+                    >
+                      Image coming soon
+                    </div>
                   )}
                 </div>
               </div>

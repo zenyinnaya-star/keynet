@@ -32,6 +32,9 @@ const SLIDES: {
   {
     eyebrow: "New Arrival",
     productName: "Keynex TypeFlow",
+    image: "/typeflow-keyboard.webp",
+    imageWidth: 288,
+    imageHeight: 161,
     description:
       "Keynex TypeFlow delivers smooth, responsive typing with a clean, minimalist design. Comfortable, consistent, and easy to use, it keeps your workflow steady whether you're studying, working, or typing through your day.",
   },
@@ -57,10 +60,19 @@ const SLIDES: {
     eyebrow: "Effortless Clarity",
     productName: "Keynex Ultra View X",
     image: "/ultra-view-x-monitor.webp",
-    imageWidth: 828,
-    imageHeight: 758,
+    imageWidth: 930,
+    imageHeight: 841,
     description:
       "Keynex UltraView X delivers sharp detail, rich color, and a smooth viewing experience inside a refined, modern frame. Built for clarity and comfort, it elevates your workspace with premium visuals that stay crisp whether you're working, creating, or unwinding.",
+  },
+  {
+    eyebrow: "Now Available",
+    productName: "Keynex Vantage Wireless",
+    image: "/vantage-wireless-headset.webp",
+    imageWidth: 900,
+    imageHeight: 1117,
+    description:
+      "Keynex Vantage Wireless pairs a lightweight, all-day comfortable build with a detachable boom mic that keeps every call clear. Cut the cord without cutting sound quality, whether you're gaming or on a work call.",
   },
 ];
 
@@ -268,8 +280,8 @@ export default function Home() {
           {/* Hero product image */}
           <div className="relative flex h-80 items-center justify-center sm:h-[26rem] lg:justify-end">
             <div className="absolute h-72 w-72 rounded-full bg-gradient-to-br from-blue-200/30 to-pink-100/30 blur-3xl sm:h-96 sm:w-96" />
-            {slide.image && (
-              <div key={activeSlide} className="animate-fade-in-up">
+            <div key={activeSlide} className="animate-fade-in-up">
+              {slide.image ? (
                 <Image
                   src={slide.image}
                   alt={`${slide.productName} product image`}
@@ -279,8 +291,15 @@ export default function Home() {
                   priority
                   className="animate-float relative h-80 w-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)] transition-transform duration-500 hover:scale-105 sm:h-[26rem]"
                 />
-              </div>
-            )}
+              ) : (
+                <div
+                  aria-hidden
+                  className="animate-float relative flex h-80 w-64 items-center justify-center rounded-3xl border border-white/10 bg-white/5 text-xs font-medium tracking-widest text-white/30 uppercase backdrop-blur-sm sm:h-[26rem] sm:w-80"
+                >
+                  Image coming soon
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

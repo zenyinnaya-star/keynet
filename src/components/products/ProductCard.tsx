@@ -33,7 +33,7 @@ export function ProductCard({
         </span>
 
         <div className="relative z-[1] flex h-40 items-center justify-center sm:h-48">
-          {product.image && (
+          {product.image ? (
             <Image
               src={product.image}
               alt={product.name}
@@ -43,6 +43,10 @@ export function ProductCard({
               style={{ filter: product.filter }}
               className="h-full w-auto object-contain"
             />
+          ) : (
+            <span className="text-[10px] font-medium tracking-widest text-white/30 uppercase">
+              Image coming soon
+            </span>
           )}
         </div>
 
