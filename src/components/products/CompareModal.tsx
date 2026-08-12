@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { getAverageRating, type Product } from "@/lib/products";
 import { StarRating } from "./StarRating";
+import { formatPrice } from "@/lib/utils";
 
 export function CompareModal({
   products,
@@ -75,7 +76,7 @@ export function CompareModal({
                     key={product.slug}
                     className="px-3 py-3 text-center font-semibold text-teal-500"
                   >
-                    ${product.price},-
+                    {formatPrice(product.price)}
                   </td>
                 ))}
               </tr>

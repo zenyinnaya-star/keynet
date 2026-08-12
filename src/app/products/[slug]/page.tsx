@@ -8,6 +8,7 @@ import { WishlistButton } from "@/components/products/WishlistButton";
 import { AddToCartButton } from "@/components/products/AddToCartButton";
 import { StarRating } from "@/components/products/StarRating";
 import { ReviewsSection } from "@/components/products/ReviewsSection";
+import { formatPrice } from "@/lib/utils";
 
 export function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
@@ -84,7 +85,7 @@ export default async function ProductDetailPage({
               </span>
             </div>
 
-            <p className="mt-4 text-2xl font-bold text-teal-500">${product.price},-</p>
+            <p className="mt-4 text-2xl font-bold text-teal-500">{formatPrice(product.price)}</p>
 
             <p className="mt-6 text-sm leading-7 text-white/70">{product.description}</p>
 

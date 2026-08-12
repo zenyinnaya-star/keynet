@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCart } from "@/lib/useCart";
 import { getProductBySlug } from "@/lib/products";
 import { ShopHeader } from "@/components/products/ShopHeader";
+import { formatPrice } from "@/lib/utils";
 
 export default function CartPage() {
   const { items, subtotal, updateQuantity, removeItem, clear } = useCart();
@@ -58,7 +59,7 @@ export default function CartPage() {
                       >
                         {product.name}
                       </Link>
-                      <p className="mt-1 text-xs text-white/50">${product.price},- each</p>
+                      <p className="mt-1 text-xs text-white/50">{formatPrice(product.price)} each</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <button
@@ -80,7 +81,7 @@ export default function CartPage() {
                       </button>
                     </div>
                     <p className="w-16 text-right text-sm font-semibold text-teal-500">
-                      ${product.price * item.quantity},-
+                      {formatPrice(product.price * item.quantity)}
                     </p>
                     <button
                       type="button"
@@ -105,7 +106,7 @@ export default function CartPage() {
               </button>
               <div className="text-right">
                 <p className="text-xs text-white/50">Subtotal</p>
-                <p className="text-2xl font-bold text-white">${subtotal},-</p>
+                <p className="text-2xl font-bold text-white">{formatPrice(subtotal)}</p>
               </div>
             </div>
 

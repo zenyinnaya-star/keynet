@@ -8,6 +8,7 @@ import { ShopHeader } from "./ShopHeader";
 import { ProductGrid } from "./ProductGrid";
 import { AddToCartButton } from "./AddToCartButton";
 import { WishlistButton } from "./WishlistButton";
+import { formatPrice } from "@/lib/utils";
 
 const SOCIAL_LINKS = [
   { href: "#", label: "Facebook", initials: "FB" },
@@ -75,11 +76,10 @@ export function ProductShowcase() {
                   >
                     Shop / {product.name}
                   </Link>
-                  <p className="text-sm font-semibold text-white/70">${product.price},-</p>
                 </div>
 
                 <h2 className="text-3xl font-semibold sm:text-4xl">{product.name}</h2>
-                <p className="mt-3 text-2xl font-bold text-teal-500">${product.price},-</p>
+                <p className="mt-3 text-2xl font-bold text-teal-500">{formatPrice(product.price)}</p>
                 <p className="mt-3 max-w-sm text-sm leading-6 text-white/60">
                   {product.tagline}
                 </p>

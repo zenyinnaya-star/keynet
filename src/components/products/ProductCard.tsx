@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getAverageRating, type Product } from "@/lib/products";
 import { StarRating } from "./StarRating";
 import { WishlistButton } from "./WishlistButton";
-import { cn } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 
 export function ProductCard({
   product,
@@ -52,7 +52,7 @@ export function ProductCard({
 
         <div className="relative z-[1] mt-4">
           <p className="text-lg font-semibold text-white">{product.name}</p>
-          <p className="mt-1 text-sm font-semibold text-teal-500">${product.price},-</p>
+          <p className="mt-1 text-sm font-semibold text-teal-500">{formatPrice(product.price)}</p>
           <div className="mt-2 flex items-center gap-2">
             <StarRating value={avgRating} />
             <span className="text-xs text-white/40">({product.reviews.length})</span>

@@ -8,6 +8,7 @@ import { ShopHeader } from "@/components/products/ShopHeader";
 import { StarRating } from "@/components/products/StarRating";
 import { WishlistButton } from "@/components/products/WishlistButton";
 import { AddToCartButton } from "@/components/products/AddToCartButton";
+import { formatPrice } from "@/lib/utils";
 
 export default function WishlistPage() {
   const { ids } = useWishlist();
@@ -63,7 +64,7 @@ export default function WishlistPage() {
                       {product.name}
                     </p>
                     <p className="mt-1 text-center text-sm font-semibold text-teal-500">
-                      ${product.price},-
+                      {formatPrice(product.price)}
                     </p>
                     <div className="mt-2 flex justify-center gap-2">
                       <StarRating value={avgRating} />
