@@ -24,6 +24,7 @@ const SOCIAL_LINKS = [
 const SLIDES: {
   eyebrow: string;
   productName: string;
+  slug: string;
   image?: string;
   imageWidth?: number;
   imageHeight?: number;
@@ -32,6 +33,7 @@ const SLIDES: {
   {
     eyebrow: "New Arrival",
     productName: "Keynex TypeFlow",
+    slug: "typeflow",
     image: "/typeflow-keyboard.webp",
     imageWidth: 288,
     imageHeight: 161,
@@ -40,25 +42,28 @@ const SLIDES: {
   },
   {
     eyebrow: "Most Popular",
-    productName: "Keynex Echo G3",
+    productName: "Keynex Midnight Black",
+    slug: "midnight-black",
     image: "/hero-headphones-3d.webp",
     imageWidth: 840,
     imageHeight: 985,
     description:
-      "The Keynex Echo G3 delivers warm, immersive audio in a sleek, lightweight design. With its minimalist look and all‑day comfort, it's the perfect companion for studying, gaming, or escaping into your favorite sounds.",
+      "Keynex Midnight Black delivers warm, immersive audio in a sleek, lightweight design. With active noise cancellation and 30 hours of battery life, it's the perfect companion for studying, gaming, or escaping into your favorite sounds.",
   },
   {
     eyebrow: "Everyday Comfort",
-    productName: "Keynex Comfort Pro",
+    productName: "Keynex Slate Grey",
+    slug: "slate-grey",
     image: "/hero-headphones-3d.webp",
     imageWidth: 840,
     imageHeight: 985,
     description:
-      "Keynex Comfort Pro is built for all‑day ease, blending soft cushioning with a lightweight frame for effortless wear. Its clear, balanced audio makes every call, song, and moment feel smooth and comfortable.",
+      "Keynex Slate Grey is built for all‑day ease, blending a muted, cool-toned finish with the longest battery life in the lineup. Its clear, balanced audio makes every call, song, and moment feel smooth and comfortable.",
   },
   {
     eyebrow: "Effortless Clarity",
     productName: "Keynex Ultra View X",
+    slug: "ultra-view-x",
     image: "/ultra-view-x-monitor.webp",
     imageWidth: 930,
     imageHeight: 841,
@@ -68,6 +73,7 @@ const SLIDES: {
   {
     eyebrow: "Now Available",
     productName: "Keynex Vantage Wireless",
+    slug: "vantage-wireless",
     image: "/vantage-wireless-headset.webp",
     imageWidth: 900,
     imageHeight: 1117,
@@ -141,7 +147,7 @@ export default function Home() {
           {NAV_LINKS.map((link) => {
             const isActive = link.href === "/";
             return (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
@@ -157,7 +163,7 @@ export default function Home() {
                     isActive && "scale-x-100",
                   )}
                 />
-              </a>
+              </Link>
             );
           })}
         </nav>
@@ -217,14 +223,14 @@ export default function Home() {
       >
         <nav className="flex flex-col gap-4 px-6 pb-6 text-sm font-medium tracking-widest text-white/80">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.label}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
               className="uppercase transition-colors hover:text-white"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <div className="flex items-center gap-3 pt-2">
             {SOCIAL_LINKS.map((social) => (
@@ -266,7 +272,10 @@ export default function Home() {
               {slide.description}
             </p>
 
-            <button className="group mt-8 inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/20 px-5 py-2.5 text-xs font-medium uppercase tracking-wider text-white/90 transition-all hover:border-[#F2D2FF]/50 hover:bg-[#F2D2FF]/5 hover:shadow-[0_0_12px_rgba(242,210,255,0.2)]">
+            <Link
+              href={`/products/${slide.slug}`}
+              className="group mt-8 inline-flex items-center gap-2 overflow-hidden rounded-full border border-white/20 px-5 py-2.5 text-xs font-medium uppercase tracking-wider text-white/90 transition-all hover:border-[#F2D2FF]/50 hover:bg-[#F2D2FF]/5 hover:shadow-[0_0_12px_rgba(242,210,255,0.2)]"
+            >
               Read More
               <span
                 aria-hidden
@@ -274,7 +283,7 @@ export default function Home() {
               >
                 →
               </span>
-            </button>
+            </Link>
           </div>
 
           {/* Hero product image */}

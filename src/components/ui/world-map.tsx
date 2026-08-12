@@ -40,6 +40,7 @@ export default function WorldMap({ dots = [], lineColor = "#dc2626" }: MapProps)
 
   return (
     <div className="relative aspect-[2/1] w-full rounded-lg font-sans">
+      {/* eslint-disable-next-line @next/next/no-img-element -- runtime-generated SVG data URI, not an optimizable next/image source */}
       <img
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
         className="pointer-events-none h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] select-none"

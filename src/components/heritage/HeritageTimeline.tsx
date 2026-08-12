@@ -1,9 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { ShopHeader } from "@/components/products/ShopHeader";
 import { Reveal } from "./Reveal";
 
@@ -131,7 +128,7 @@ export function HeritageTimeline() {
         </div>
       </section>
 
-        <div className="px-6 py-10 text-[11px] text-white/40 uppercase sm:px-10">
+      <div className="px-6 py-10 text-[11px] text-white/40 uppercase sm:px-10">
         © 2026 keynex — All rights reserved
       </div>
     </div>

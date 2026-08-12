@@ -110,15 +110,12 @@ export default function CartPage() {
               </div>
             </div>
 
-            <button
-              type="button"
-              className="mt-6 w-full rounded-full bg-gradient-to-r from-teal-600 to-teal-500 py-3 text-sm font-bold text-white transition-all hover:shadow-[0_0_20px_rgba(242,210,255,0.3)]"
+            <Link
+              href="/checkout"
+              className="mt-6 block w-full rounded-full bg-gradient-to-r from-teal-600 to-teal-500 py-3 text-center text-sm font-bold text-white transition-all hover:shadow-[0_0_20px_rgba(242,210,255,0.3)]"
             >
               Checkout
-            </button>
-            <p className="mt-2 text-center text-xs text-white/30">
-              This is a demo store — checkout isn&apos;t connected to real payments.
-            </p>
+            </Link>
           </>
         )}
       </div>
