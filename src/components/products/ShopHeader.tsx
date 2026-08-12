@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useCart } from "@/lib/useCart";
 import { useWishlist } from "@/lib/useWishlist";
 import { cn } from "@/lib/utils";
+import { BrandMark, Wordmark } from "@/components/BrandMark";
 
 export function ShopHeader() {
   const pathname = usePathname();
@@ -29,7 +30,10 @@ export function ShopHeader() {
           : "border-b border-transparent bg-transparent",
       )}
     >
-      <div></div>
+      <Link href="/" className="group flex items-center gap-2.5">
+        <BrandMark className="h-7 w-7 text-[var(--keynex-teal-bright)] transition-transform duration-300 group-hover:scale-105" />
+        <Wordmark className="text-sm" />
+      </Link>
 
       <nav className="hidden items-center gap-8 text-xs font-medium tracking-widest text-white/80 md:flex">
         <Link

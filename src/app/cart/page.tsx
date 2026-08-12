@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCart } from "@/lib/useCart";
 import { getProductBySlug } from "@/lib/products";
 import { ShopHeader } from "@/components/products/ShopHeader";
+import { Footer } from "@/components/Footer";
 import { formatPrice } from "@/lib/utils";
 
 export default function CartPage() {
@@ -119,6 +120,8 @@ export default function CartPage() {
           </>
         )}
       </div>
+
+      <Footer />
     </div>
   );
 }

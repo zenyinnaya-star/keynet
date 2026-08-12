@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useWishlist } from "@/lib/useWishlist";
 import { getProductBySlug, getAverageRating } from "@/lib/products";
 import { ShopHeader } from "@/components/products/ShopHeader";
+import { Footer } from "@/components/Footer";
 import { StarRating } from "@/components/products/StarRating";
 import { WishlistButton } from "@/components/products/WishlistButton";
 import { AddToCartButton } from "@/components/products/AddToCartButton";
@@ -80,6 +81,8 @@ export default function WishlistPage() {
           </div>
         )}
       </div>
+
+      <Footer />
     </div>
   );
 }

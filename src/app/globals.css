@@ -5,6 +5,16 @@
   --secondary-color: #F2D2FF;
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Studio Afterdark: black is the listening room, teal is the signal
+     path, lilac is a rare afterimage used only for accents. */
+  --keynex-panel: #101716;
+  --keynex-panel-2: #151d1b;
+  --keynex-line: rgba(255, 255, 255, 0.12);
+  --keynex-muted: #89958f;
+  --keynex-teal: #13b8a6;
+  --keynex-teal-bright: #25d1bd;
+  --keynex-lilac: #f2d2ff;
 }
 
 @theme inline {
@@ -94,4 +104,65 @@ body {
   opacity: 0.06;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Signature Studio Afterdark surface treatments */
+
+.signal-gradient {
+  background-image: linear-gradient(115deg, #087f76 0%, var(--keynex-teal) 48%, var(--keynex-teal-bright) 100%);
+}
+
+.signal-text {
+  background-image: linear-gradient(115deg, #78fff0 0%, var(--keynex-teal-bright) 55%, #b4fff6 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+.glow-teal {
+  box-shadow: 0 0 0 1px rgba(37, 209, 189, 0.22), 0 20px 70px rgba(19, 184, 166, 0.14);
+}
+
+.glow-lilac {
+  box-shadow: 0 0 55px rgba(242, 210, 255, 0.16);
+}
+
+.diagonal-cut {
+  clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
+}
+
+.diagonal-cut-tight {
+  clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+}
+
+.signal-line {
+  position: relative;
+  padding-left: 18px;
+}
+
+.signal-line::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 10px;
+  height: 1px;
+  background: var(--keynex-teal);
+  box-shadow: 5px 0 0 rgba(19, 184, 166, 0.34), 10px 0 0 rgba(19, 184, 166, 0.12);
+  content: "";
+}
+
+.wordmark-x {
+  position: relative;
+  display: inline-block;
+  padding-right: 0.08em;
+}
+
+.wordmark-x::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0.14em;
+  height: 0.75em;
+  transform: skewX(-32deg);
+  background: var(--keynex-teal-bright);
+  content: "";
 }

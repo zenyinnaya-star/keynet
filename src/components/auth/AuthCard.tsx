@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { BrandMark, Wordmark } from "@/components/BrandMark";
 
 type Mode = "login" | "signup";
 
@@ -56,7 +57,10 @@ export function AuthCard({ mode }: { mode: Mode }) {
 
           <div className="relative z-10 flex h-full flex-col justify-between p-8">
             <div className="flex items-center justify-between">
-              <div></div>
+              <Link href="/" className="flex items-center gap-2.5">
+                <BrandMark className="h-7 w-7 text-[var(--keynex-teal-bright)]" />
+                <Wordmark className="text-sm" />
+              </Link>
               <Link
                 href={isSignup ? "/login" : "/signup"}
                 className="rounded-full border border-white/30 px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white hover:text-black"
@@ -77,7 +81,10 @@ export function AuthCard({ mode }: { mode: Mode }) {
         {/* Form panel */}
         <div className="flex w-full flex-col justify-center px-6 py-12 sm:px-12 md:w-[55%]">
           <div className="mx-auto w-full max-w-sm">
-            <div className="mb-6 md:hidden"></div>
+            <Link href="/" className="mb-6 flex items-center gap-2.5 md:hidden">
+              <BrandMark className="h-7 w-7 text-[var(--keynex-teal-bright)]" />
+              <Wordmark className="text-sm" />
+            </Link>
 
             <h1 className="text-2xl font-semibold text-white">
               {isSignup ? "Create your account" : "Welcome back"}
