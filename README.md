@@ -13,6 +13,7 @@ It’s built to be simple to browse, easy to navigate, and focused on presenting
 - Footer with Site Links
 - User Authentication
 - Shopping Cart & Checkout
+- Product Comparison
 - Wishlist / Saved Items
 - Product Search
 - Product Ratings & Reviews
