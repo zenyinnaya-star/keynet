@@ -14,7 +14,7 @@ It’s built to be simple to browse, easy to navigate, and focused on presenting
 - User Authentication
 - Shopping Cart & Checkout
 - Wishlist / Saved Items
-- Product Comparison
+- Product Search
 - Product Ratings & Reviews
 - Heritage / About Us Page
 
