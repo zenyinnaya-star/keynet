@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getAverageRating, type Product } from "@/lib/products";
 import { StarRating } from "./StarRating";
 import { WishlistButton } from "./WishlistButton";
-import { cn } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 
 export function ProductCard({
   product,
@@ -32,21 +32,27 @@ export function ProductCard({
           {product.watermark}
         </span>
 
-        <div className="relative z-[1] flex justify-center">
-          <Image
-            src="/hero-headphones-3d.webp"
-            alt={`${product.name} headphones`}
-            width={280}
-            height={329}
-            sizes="220px"
-            style={{ filter: product.filter }}
-            className="h-40 w-auto object-contain sm:h-48"
-          />
+        <div className="relative z-[1] flex h-40 items-center justify-center sm:h-48">
+          {product.image ? (
+            <Image
+              src={product.image}
+              alt={product.name}
+              width={product.imageWidth}
+              height={product.imageHeight}
+              sizes="220px"
+              style={{ filter: product.filter }}
+              className="h-full w-auto object-contain"
+            />
+          ) : (
+            <span className="text-[10px] font-medium tracking-widest text-white/30 uppercase">
+              Image coming soon
+            </span>
+          )}
         </div>
 
         <div className="relative z-[1] mt-4">
           <p className="text-lg font-semibold text-white">{product.name}</p>
-          <p className="mt-1 text-sm font-semibold text-teal-500">${product.price},-</p>
+          <p className="mt-1 text-sm font-semibold text-teal-500">{formatPrice(product.price)}</p>
           <div className="mt-2 flex items-center gap-2">
             <StarRating value={avgRating} />
             <span className="text-xs text-white/40">({product.reviews.length})</span>

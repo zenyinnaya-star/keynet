@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ShopHeader } from "@/components/products/ShopHeader";
+import { Footer } from "@/components/Footer";
 import { ContactForm } from "@/components/contact/ContactForm";
 import WorldMap from "@/components/ui/world-map";
 
@@ -78,9 +79,7 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <div className="px-6 pb-10 text-[11px] text-white/40 uppercase sm:px-10">
-        © 2026 keynex — All rights reserved
-      </div>
+      <Footer />
     </div>
   );
 }

@@ -26,8 +26,10 @@ function getSnapshot(): CartItem[] {
   return cachedItems;
 }
 
+const EMPTY_ITEMS: CartItem[] = [];
+
 function getServerSnapshot(): CartItem[] {
-  return [];
+  return EMPTY_ITEMS;
 }
 
 function subscribe(callback: () => void) {

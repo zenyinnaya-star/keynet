@@ -22,8 +22,10 @@ function getSnapshot(): string[] {
   return cachedIds;
 }
 
+const EMPTY_IDS: string[] = [];
+
 function getServerSnapshot(): string[] {
-  return [];
+  return EMPTY_IDS;
 }
 
 function subscribe(callback: () => void) {

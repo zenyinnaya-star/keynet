@@ -1,11 +1,85 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCart } from "@/lib/useCart";
 import { useWishlist } from "@/lib/useWishlist";
+import { useUser } from "@/lib/useUser";
+import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
+import { BrandMark, Wordmark } from "@/components/BrandMark";
+
+function UserMenu() {
+  const router = useRouter();
+  const { user } = useUser();
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, [open]);
+
+  if (!user) {
+    return (
+      <Link
+        href="/login"
+        className="hidden text-xs font-medium tracking-widest text-white/70 uppercase transition-colors hover:text-white sm:inline"
+      >
+        Log In
+      </Link>
+    );
+  }
+
+  const displayName =
+    (user.user_metadata?.full_name as string | undefined)?.split(" ")[0] ||
+    user.email?.split("@")[0] ||
+    "Account";
+
+  const handleLogout = async () => {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    setOpen(false);
+    router.push("/");
+    router.refresh();
+  };
+
+  return (
+    <div ref={menuRef} className="relative hidden sm:block">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        aria-haspopup="menu"
+        className="text-xs font-medium tracking-widest text-white/70 uppercase transition-colors hover:text-white"
+      >
+        {displayName}
+      </button>
+      {open && (
+        <div
+          role="menu"
+          className="absolute right-0 z-30 mt-3 w-40 overflow-hidden rounded-xl border border-white/10 bg-zinc-900 py-1 shadow-2xl shadow-black/50"
+        >
+          <button
+            type="button"
+            role="menuitem"
+            onClick={handleLogout}
+            className="block w-full px-4 py-2 text-left text-xs text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+          >
+            Log out
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function ShopHeader() {
   const pathname = usePathname();
@@ -29,7 +103,10 @@ export function ShopHeader() {
           : "border-b border-transparent bg-transparent",
       )}
     >
-      <div></div>
+      <Link href="/" className="group flex items-center gap-2.5">
+        <BrandMark className="h-7 w-7 text-[var(--keynex-teal-bright)] transition-transform duration-300 group-hover:scale-105" />
+        <Wordmark className="text-sm" />
+      </Link>
 
       <nav className="hidden items-center gap-8 text-xs font-medium tracking-widest text-white/80 md:flex">
         <Link
@@ -95,12 +172,7 @@ export function ShopHeader() {
       </nav>
 
       <div className="flex items-center gap-3">
-        <Link
-          href="/login"
-          className="hidden text-xs font-medium tracking-widest text-white/70 uppercase transition-colors hover:text-white sm:inline"
-        >
-          Log In
-        </Link>
+        <UserMenu />
         <Link
           href="/wishlist"
           aria-label={`Wishlist, ${wishlistCount} item${wishlistCount === 1 ? "" : "s"}`}

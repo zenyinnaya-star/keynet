@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "keynex",
-  description: "A Next.js web application",
+  description: "Premium headphones, keyboards, and monitors from keynex.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

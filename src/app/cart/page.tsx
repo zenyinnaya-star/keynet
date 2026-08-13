@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useCart } from "@/lib/useCart";
 import { getProductBySlug } from "@/lib/products";
 import { ShopHeader } from "@/components/products/ShopHeader";
+import { Footer } from "@/components/Footer";
+import { formatPrice } from "@/lib/utils";
 
 export default function CartPage() {
   const { items, subtotal, updateQuantity, removeItem, clear } = useCart();
@@ -34,15 +36,23 @@ export default function CartPage() {
                 if (!product) return null;
                 return (
                   <div key={item.slug} className="flex flex-wrap items-center gap-4 py-6">
-                    <Image
-                      src="/hero-headphones-3d.webp"
-                      alt={`${product.name} headphones`}
-                      width={120}
-                      height={141}
-                      sizes="80px"
-                      style={{ filter: product.filter }}
-                      className="h-16 w-auto object-contain"
-                    />
+                    <div className="flex h-16 w-16 shrink-0 items-center justify-center">
+                      {product.image ? (
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          width={product.imageWidth}
+                          height={product.imageHeight}
+                          sizes="64px"
+                          style={{ filter: product.filter }}
+                          className="h-full w-auto object-contain"
+                        />
+                      ) : (
+                        <span className="text-center text-[8px] font-medium tracking-widest text-white/30 uppercase">
+                          Soon
+                        </span>
+                      )}
+                    </div>
                     <div className="min-w-0 flex-1">
                       <Link
                         href={`/products/${product.slug}`}
@@ -50,7 +60,7 @@ export default function CartPage() {
                       >
                         {product.name}
                       </Link>
-                      <p className="mt-1 text-xs text-white/50">${product.price},- each</p>
+                      <p className="mt-1 text-xs text-white/50">{formatPrice(product.price)} each</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <button
@@ -72,7 +82,7 @@ export default function CartPage() {
                       </button>
                     </div>
                     <p className="w-16 text-right text-sm font-semibold text-teal-500">
-                      ${product.price * item.quantity},-
+                      {formatPrice(product.price * item.quantity)}
                     </p>
                     <button
                       type="button"
@@ -97,22 +107,21 @@ export default function CartPage() {
               </button>
               <div className="text-right">
                 <p className="text-xs text-white/50">Subtotal</p>
-                <p className="text-2xl font-bold text-white">${subtotal},-</p>
+                <p className="text-2xl font-bold text-white">{formatPrice(subtotal)}</p>
               </div>
             </div>
 
-            <button
-              type="button"
-              className="mt-6 w-full rounded-full bg-gradient-to-r from-teal-600 to-teal-500 py-3 text-sm font-bold text-white transition-all hover:shadow-[0_0_20px_rgba(242,210,255,0.3)]"
+            <Link
+              href="/checkout"
+              className="mt-6 block w-full rounded-full bg-gradient-to-r from-teal-600 to-teal-500 py-3 text-center text-sm font-bold text-white transition-all hover:shadow-[0_0_20px_rgba(242,210,255,0.3)]"
             >
               Checkout
-            </button>
-            <p className="mt-2 text-center text-xs text-white/30">
-              This is a demo store — checkout isn&apos;t connected to real payments.
-            </p>
+            </Link>
           </>
         )}
       </div>
+
+      <Footer />
     </div>
   );
 }

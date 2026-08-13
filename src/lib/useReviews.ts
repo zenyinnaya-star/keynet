@@ -24,8 +24,10 @@ function getExtraSnapshot(slug: string): Review[] {
   return cachedExtra.get(slug)!;
 }
 
+const EMPTY_REVIEWS: Review[] = [];
+
 function getServerSnapshot(): Review[] {
-  return [];
+  return EMPTY_REVIEWS;
 }
 
 function setExtra(slug: string, reviews: Review[]) {
