@@ -49,7 +49,7 @@ export function HeritageTimeline() {
             <p className="text-sm leading-7 text-[var(--keynex-muted)] sm:text-[15px]">
               keynex began as a shared frustration: everyday audio gear that
               looked disposable and sounded worse. Co-founders Zabdiel and
-              Santiago spent their evenings after class sketching product
+              Jonah spent their evenings after class sketching product
               concepts on whatever paper was closest — napkins, the backs of
               notebooks, the margins of textbooks they should have been
               reading instead. What started as a way to build the headphones
@@ -121,7 +121,7 @@ export function HeritageTimeline() {
               <span className="text-[10px] font-bold tracking-[0.25em] text-[var(--keynex-teal-bright)] uppercase">
                 Co-Founder
               </span>
-              <h3 className="text-xl font-bold tracking-wide text-white uppercase">Santiago</h3>
+              <h3 className="text-xl font-bold tracking-wide text-white uppercase">Jonah</h3>
               <p className="text-xs leading-relaxed text-[var(--keynex-muted)]">
                 Pushed the brand: the way keynex sounds, looks, and talks to the people who wear
                 it.
