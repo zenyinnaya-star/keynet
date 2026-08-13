@@ -1,4 +1,4 @@
-# Keynex - 
+# Keynex - Where Design Meets Performance.
 
 Keynex is a modern peripherals website showcasing high‑quality tech products with clean visuals and fast performance.  
 The site highlights laptops, keyboards, headsets, and accessories using custom‑rendered 3D images and automated asset tools.  
