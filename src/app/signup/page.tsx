@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { AuthCard } from "@/components/auth/AuthCard";
 
 export const metadata: Metadata = {
@@ -6,5 +7,9 @@ export const metadata: Metadata = {
 };
 
 export default function SignupPage() {
-  return <AuthCard mode="signup" />;
+  return (
+    <Suspense fallback={null}>
+      <AuthCard mode="signup" />
+    </Suspense>
+  );
 }

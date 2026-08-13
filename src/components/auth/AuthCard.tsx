@@ -3,9 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { BrandMark, Wordmark } from "@/components/BrandMark";
+import { createClient } from "@/lib/supabase/client";
 
 type Mode = "login" | "signup";
+type Status = "idle" | "check-email" | "reset-sent";
 
 const IMAGE_CLIP = "polygon(0 0, 100% 0, 82% 100%, 0 100%)";
 
@@ -14,14 +17,19 @@ const inputClass =
 
 export function AuthCard({ mode }: { mode: Mode }) {
   const isSignup = mode === "signup";
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = searchParams.get("next") ?? "/";
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setError("");
 
@@ -34,7 +42,72 @@ export function AuthCard({ mode }: { mode: Mode }) {
       return;
     }
 
-    setSuccess(true);
+    setSubmitting(true);
+    const supabase = createClient();
+
+    if (isSignup) {
+      const { data, error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { data: { full_name: name } },
+      });
+      setSubmitting(false);
+      if (signUpError) {
+        setError(signUpError.message);
+        return;
+      }
+      if (data.session) {
+        router.push(next);
+        router.refresh();
+        return;
+      }
+      setStatus("check-email");
+      return;
+    }
+
+    const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+    setSubmitting(false);
+    if (signInError) {
+      setError(signInError.message);
+      return;
+    }
+    router.push(next);
+    router.refresh();
+  };
+
+  const handleForgotPassword = async () => {
+    if (!email.trim()) {
+      setError('Enter your email above first, then tap "Forgot password?".');
+      return;
+    }
+    setError("");
+    setSubmitting(true);
+    const supabase = createClient();
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setSubmitting(false);
+    if (resetError) {
+      setError(resetError.message);
+      return;
+    }
+    setStatus("reset-sent");
+  };
+
+  const handleGoogleSignIn = async () => {
+    setError("");
+    const supabase = createClient();
+    const { error: oauthError } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
+      },
+    });
+    if (oauthError) {
+      setError(oauthError.message);
+    }
+    // On success Supabase redirects the browser to Google, then back to
+    // /auth/callback — nothing further to do here.
   };
 
   return (
@@ -95,13 +168,20 @@ export function AuthCard({ mode }: { mode: Mode }) {
                 : "Log in to your keynex account."}
             </p>
 
-            {success ? (
-              <div className="mt-8 rounded-xl border border-green-600/40 bg-green-600/10 p-4 text-sm text-green-400">
-                {isSignup ? "Account created." : "Signed in."} This is a demo form — it isn&apos;t
-                connected to a real account system, so nothing was actually stored.
-                <Link href="/" className="mt-3 block font-semibold text-white underline">
-                  Continue to keynex →
+            {status === "check-email" ? (
+              <div className="mt-8 rounded-xl border border-teal-600/40 bg-teal-600/10 p-4 text-sm text-teal-300">
+                Check your inbox — we sent a confirmation link to{" "}
+                <span className="font-semibold text-white">{email}</span>. Click it to activate
+                your account, then log in.
+                <Link href="/login" className="mt-3 block font-semibold text-white underline">
+                  Back to log in →
                 </Link>
+              </div>
+            ) : status === "reset-sent" ? (
+              <div className="mt-8 rounded-xl border border-teal-600/40 bg-teal-600/10 p-4 text-sm text-teal-300">
+                If an account exists for{" "}
+                <span className="font-semibold text-white">{email}</span>, we&apos;ve sent a
+                password reset link.
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="mt-8 space-y-4">
@@ -148,8 +228,8 @@ export function AuthCard({ mode }: { mode: Mode }) {
                   <div className="text-right">
                     <button
                       type="button"
+                      onClick={handleForgotPassword}
                       className="text-xs text-white/50 transition-colors hover:text-white"
-                      onClick={() => setError("Password reset isn't connected in this demo.")}
                     >
                       Forgot password?
                     </button>
@@ -158,9 +238,16 @@ export function AuthCard({ mode }: { mode: Mode }) {
 
                 <button
                   type="submit"
-                  className="w-full rounded-full bg-gradient-to-r from-teal-600 to-teal-500 py-3 text-sm font-bold text-white transition-all hover:shadow-[0_0_20px_rgba(242,210,255,0.3)]"
+                  disabled={submitting}
+                  className="w-full rounded-full bg-gradient-to-r from-teal-600 to-teal-500 py-3 text-sm font-bold text-white transition-all hover:shadow-[0_0_20px_rgba(242,210,255,0.3)] disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {isSignup ? "Sign up" : "Log in"}
+                  {submitting
+                    ? isSignup
+                      ? "Signing up..."
+                      : "Logging in..."
+                    : isSignup
+                      ? "Sign up"
+                      : "Log in"}
                 </button>
 
                 <div className="flex items-center gap-3 py-1">
@@ -171,9 +258,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
 
                 <button
                   type="button"
-                  onClick={() =>
-                    setError("Google sign-in isn't connected in this demo — try email instead.")
-                  }
+                  onClick={handleGoogleSignIn}
                   className="flex w-full items-center justify-center gap-2 rounded-full border border-white/20 py-3 text-sm font-medium text-white transition-all hover:border-teal-500/50 hover:bg-black/30 hover:shadow-[0_0_12px_rgba(242,210,255,0.15)]"
                 >
                   <span
