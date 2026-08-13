@@ -22,6 +22,7 @@ function FieldLabel({ children }: { children: React.ReactNode }) {
   return <label className="mb-1.5 block text-xs text-white/50">{children}</label>;
 }
 
+// checkout page: collects shipping info, lets the user pick delivery speed and a promo code, then hands off to Stripe
 export function CheckoutForm({ userEmail }: { userEmail: string }) {
   const { items, subtotal } = useCart();
 
@@ -60,6 +61,7 @@ export function CheckoutForm({ userEmail }: { userEmail: string }) {
   const discount = promoApplied ? subtotal * PROMO_DISCOUNT : 0;
   const total = subtotal + shippingCost - discount;
 
+  // this is just for the on-screen total; the real price is recalculated server-side in placeOrder
   const applyPromo = () => {
     setPromoError("");
     if (promoInput.trim().toUpperCase() === PROMO_CODE) {
@@ -70,6 +72,7 @@ export function CheckoutForm({ userEmail }: { userEmail: string }) {
     }
   };
 
+  // validates the form, then creates the order and redirects to Stripe checkout
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setError("");

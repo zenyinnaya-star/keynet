@@ -8,6 +8,7 @@ const SIZE_CLASSES = {
   lg: "text-2xl",
 };
 
+// renders 5 stars filled up to "value"; pass onChange to make it clickable for picking a rating
 export function StarRating({
   value,
   onChange,
@@ -19,6 +20,7 @@ export function StarRating({
   size?: keyof typeof SIZE_CLASSES;
   className?: string;
 }) {
+  // read-only display mode if no onChange handler is given, otherwise it's a clickable picker
   const interactive = !!onChange;
 
   return (

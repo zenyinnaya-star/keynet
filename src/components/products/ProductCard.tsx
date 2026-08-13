@@ -6,6 +6,7 @@ import { WishlistButton } from "./WishlistButton";
 import { AddToCartButton } from "./AddToCartButton";
 import { cn, formatPrice } from "@/lib/utils";
 
+// product tile shown in the grid, with a wishlist toggle and a checkbox to add it to the compare list
 export function ProductCard({
   product,
   compareChecked,

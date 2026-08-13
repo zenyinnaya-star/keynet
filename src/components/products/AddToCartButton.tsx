@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useCart } from "@/lib/useCart";
 import { cn } from "@/lib/utils";
 
+// button that adds a product to the cart and briefly shows a confirmation state
 export function AddToCartButton({
   slug,
   className,
@@ -20,6 +21,7 @@ export function AddToCartButton({
       onClick={() => {
         addItem(slug);
         setAdded(true);
+        // switch back to the normal label after the confirmation has had time to be seen
         window.setTimeout(() => setAdded(false), 1800);
       }}
       className={cn(

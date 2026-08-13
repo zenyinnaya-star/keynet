@@ -6,6 +6,7 @@ import { getAverageRating } from "@/lib/products";
 import { StarRating } from "./StarRating";
 import { ReviewerAvatar } from "./ReviewerAvatar";
 
+// shows a product's average rating, existing reviews, and a form to submit a new one
 export function ReviewsSection({ slug }: { slug: string }) {
   const { reviews, addReview } = useReviews(slug);
   const [name, setName] = useState("");
@@ -15,6 +16,7 @@ export function ReviewsSection({ slug }: { slug: string }) {
 
   const average = getAverageRating(reviews);
 
+  // saves the new review and resets the form, showing a thank-you message briefly
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!name.trim() || !comment.trim() || rating === 0) return;

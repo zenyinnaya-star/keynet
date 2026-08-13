@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Checkout | keynex",
 };
 
+// server component: gates the checkout form behind login, then hands off the user's email
 export default async function CheckoutPage() {
   const supabase = await createClient();
   const {

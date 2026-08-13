@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Order Confirmed | keynex",
 };
 
+// shown after returning from Stripe — looks up the order and shows "paid" or "still processing" depending on webhook timing
 export default async function CheckoutSuccessPage({
   searchParams,
 }: {
@@ -24,6 +25,7 @@ export default async function CheckoutSuccessPage({
   } = await supabase.auth.getUser();
   if (!user) notFound();
 
+  // scoped to this user so nobody can view someone else's order by guessing an id
   const { data: order } = await supabase
     .from("orders")
     .select("id, status, total, shipping_address")

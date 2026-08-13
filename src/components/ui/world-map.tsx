@@ -12,10 +12,12 @@ interface MapProps {
   lineColor?: string;
 }
 
+// dotted world map background with animated curved lines connecting pairs of coordinates
 export default function WorldMap({ dots = [], lineColor = "#dc2626" }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const map = new DottedMap({ height: 100, grid: "diagonal" });
 
+  // pre-render the dotted map as an SVG string once per render, used as the background image
   const svgMap = map.getSVG({
     radius: 0.22,
     color: "#FFFFFF40",
@@ -23,12 +25,14 @@ export default function WorldMap({ dots = [], lineColor = "#dc2626" }: MapProps)
     backgroundColor: "transparent",
   });
 
+  // converts a lat/lng pair into x/y coordinates on the 800x400 SVG viewbox
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
     const y = (90 - lat) * (400 / 180);
     return { x, y };
   };
 
+  // builds an SVG path that arcs upward between two points instead of a straight line
   const createCurvedPath = (
     start: { x: number; y: number },
     end: { x: number; y: number },

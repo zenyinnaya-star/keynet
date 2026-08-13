@@ -8,6 +8,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 // `orders`/`transactions` RLS policies intentionally have no insert/update
 // path for the anon/authenticated roles, by design (see
 // supabase/migrations/20260805090400_orders_and_transactions.sql).
+// receives events from Stripe and updates order/transaction status accordingly
 export async function POST(request: Request) {
   const body = await request.text();
   const signature = request.headers.get("stripe-signature");
@@ -16,6 +17,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Missing signature" }, { status: 400 });
   }
 
+  // verifies the request actually came from Stripe using the raw body + signature header
   let event: Stripe.Event;
   try {
     event = getStripe().webhooks.constructEvent(
@@ -30,6 +32,7 @@ export async function POST(request: Request) {
 
   const supabase = createAdminClient();
 
+  // payment succeeded — mark the order paid and log the transaction
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
     const orderId = session.client_reference_id ?? session.metadata?.order_id;
@@ -51,6 +54,7 @@ export async function POST(request: Request) {
     });
   }
 
+  // checkout session timed out without payment — cancel the order
   if (event.type === "checkout.session.expired") {
     const session = event.data.object as Stripe.Checkout.Session;
     const orderId = session.client_reference_id ?? session.metadata?.order_id;

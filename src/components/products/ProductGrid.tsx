@@ -8,18 +8,21 @@ import { CompareModal } from "./CompareModal";
 
 const MAX_COMPARE = 3;
 
+// searchable product grid with a "select to compare" flow, capped at MAX_COMPARE items
 export function ProductGrid() {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(() => searchParams.get("search") ?? "");
   const [compareSlugs, setCompareSlugs] = useState<string[]>([]);
   const [showCompare, setShowCompare] = useState(false);
 
+  // re-filter only when the search query changes, not on every render
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return PRODUCTS;
     return PRODUCTS.filter((product) => product.name.toLowerCase().includes(q));
   }, [query]);
 
+  // adds/removes a slug from the compare list, ignoring new checks once the max is reached
   const toggleCompare = (slug: string, checked: boolean) => {
     setCompareSlugs((current) => {
       if (checked) {

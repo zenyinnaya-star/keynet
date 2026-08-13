@@ -100,10 +100,12 @@ const PILLARS = [
 
 const AUTO_ADVANCE_MS = 9000;
 
+// homepage: auto-advancing hero carousel plus catalog teaser, "why keynex" pillars, and a closing CTA
 export default function Home() {
   const router = useRouter();
   const [activeSlide, setActiveSlide] = useState(0);
 
+  // auto-advance the hero slide, restarting the timer whenever the slide changes (manual or automatic)
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide((current) => (current + 1) % SLIDES.length);
@@ -466,6 +468,7 @@ function ShieldIcon({ className }: { className?: string }) {
   );
 }
 
+// product card used in the homepage catalog carousel
 function TeaserCard({ product }: { product: Product }) {
   return (
     <div className="group relative flex flex-col overflow-hidden border-b border-white/15 bg-[var(--keynex-panel)] transition duration-300 hover:border-[var(--keynex-teal)] hover:shadow-[0_18px_40px_rgba(19,184,166,0.12)]">

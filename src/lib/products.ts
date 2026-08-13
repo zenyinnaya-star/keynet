@@ -29,6 +29,7 @@ export type Product = {
 const HEADPHONE_IMAGE = "/hero-headphones-3d.webp";
 const HEADPHONE_IMAGE_SIZE = { imageWidth: 840, imageHeight: 985 };
 
+// hardcoded product catalog — the headphone variants share one product photo, tinted per color via CSS filter
 export const PRODUCTS: Product[] = [
   {
     slug: "midnight-black",
@@ -409,6 +410,7 @@ export function getProductBySlug(slug: string): Product | undefined {
   return PRODUCTS.find((product) => product.slug === slug);
 }
 
+// average star rating across all reviews, 0 if there are none yet
 export function getAverageRating(reviews: Review[]): number {
   if (reviews.length === 0) return 0;
   const total = reviews.reduce((sum, review) => sum + review.rating, 0);

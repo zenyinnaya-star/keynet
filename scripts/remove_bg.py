@@ -1,3 +1,4 @@
+# cuts an object out of a photo using GrabCut and saves it as a cropped transparent PNG
 import sys
 import cv2
 import numpy as np
@@ -17,6 +18,7 @@ margin_x = int(w * 0.03)
 margin_y = int(h * 0.03)
 rect = (margin_x, margin_y, w - 2 * margin_x, h - 2 * margin_y)
 
+# tells GrabCut the subject is roughly inside this rectangle, everything outside it is background
 cv2.grabCut(img, mask, rect, bgd_model, fgd_model, 8, cv2.GC_INIT_WITH_RECT)
 
 mask2 = np.where((mask == cv2.GC_FGD) | (mask == cv2.GC_PR_FGD), 255, 0).astype("uint8")

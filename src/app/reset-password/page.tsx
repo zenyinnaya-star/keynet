@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Reset Password | keynex",
 };
 
+// route wrapper, all the actual content lives in ResetPasswordForm
 export default function ResetPasswordPage() {
   return <ResetPasswordForm />;
 }

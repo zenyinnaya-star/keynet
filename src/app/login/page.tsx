@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Log In | keynex",
 };
 
+// Suspense is required here since AuthCard reads the "next" redirect param via useSearchParams
 export default function LoginPage() {
   return (
     <Suspense fallback={null}>

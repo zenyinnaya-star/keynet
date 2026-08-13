@@ -11,8 +11,10 @@ import { WishlistButton } from "@/components/products/WishlistButton";
 import { AddToCartButton } from "@/components/products/AddToCartButton";
 import { formatPrice } from "@/lib/utils";
 
+// wishlist page: shows the saved products, or an empty state pointing back to the catalog
 export default function WishlistPage() {
   const { ids } = useWishlist();
+  // wishlist only stores slugs, so look each one up in the catalog and drop any that no longer exist
   const products = ids
     .map((slug) => getProductBySlug(slug))
     .filter((product): product is NonNullable<typeof product> => !!product);

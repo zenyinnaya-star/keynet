@@ -9,6 +9,7 @@ import { createClient } from "@/lib/supabase/client";
 const inputClass =
   "w-full rounded-lg border border-white/15 bg-black/40 px-4 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-teal-500 focus:outline-none";
 
+// form shown after clicking a password reset link, lets the user set a new password
 export function ResetPasswordForm() {
   const router = useRouter();
   const [password, setPassword] = useState("");
@@ -40,6 +41,7 @@ export function ResetPasswordForm() {
       return;
     }
     setDone(true);
+    // give the user a moment to read the success message before redirecting
     setTimeout(() => router.push("/login"), 2000);
   };
 

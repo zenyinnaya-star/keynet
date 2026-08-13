@@ -11,10 +11,12 @@ import { StarRating } from "@/components/products/StarRating";
 import { ReviewsSection } from "@/components/products/ReviewsSection";
 import { formatPrice } from "@/lib/utils";
 
+// tells Next.js which slugs exist so every product page can be pre-rendered at build time
 export function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
 }
 
+// sets the browser tab title per product instead of one generic title for every product page
 export async function generateMetadata({
   params,
 }: {
@@ -25,6 +27,7 @@ export async function generateMetadata({
   return { title: product ? `${product.name} | keynex` : "Product | keynex" };
 }
 
+// individual product page: image, price, specs, and reviews for one product
 export default async function ProductDetailPage({
   params,
 }: {
