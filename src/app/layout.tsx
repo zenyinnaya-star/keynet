@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   description: "Premium headphones, keyboards, and monitors from keynex.",
 };
 
+// top-level layout wrapping every page, sets up the fonts and base HTML structure
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html

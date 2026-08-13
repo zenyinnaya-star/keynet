@@ -21,6 +21,7 @@ const styles = {
     "border border-black/[.08] hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]",
 };
 
+// shared button styling — renders as a Next.js Link when given an href, otherwise a real <button>
 export function Button({
   variant = "primary",
   className,

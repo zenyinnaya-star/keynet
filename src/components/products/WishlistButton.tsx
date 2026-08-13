@@ -3,6 +3,7 @@
 import { useWishlist } from "@/lib/useWishlist";
 import { cn } from "@/lib/utils";
 
+// heart button that toggles a product's wishlist status
 export function WishlistButton({
   slug,
   className,
@@ -17,6 +18,7 @@ export function WishlistButton({
     <button
       type="button"
       onClick={(event) => {
+        // this button often sits inside a Link (e.g. on ProductCard), so stop the click from also navigating
         event.preventDefault();
         event.stopPropagation();
         toggle(slug);

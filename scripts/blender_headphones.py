@@ -47,6 +47,7 @@ ACCENT_COLOR = (0.55, 0.55, 0.58, 1.0)    # brushed-metal accent (hinges)
 # Scene setup
 # ---------------------------------------------------------------------------
 def clear_scene():
+    # deletes every object, then purges leftover mesh/curve/material data blocks with no users
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete(use_global=False)
     for block_collection in (bpy.data.meshes, bpy.data.curves, bpy.data.materials):
@@ -55,6 +56,7 @@ def clear_scene():
                 block_collection.remove(block)
 
 
+# creates a simple Principled BSDF material with the given base color, roughness, and metallic values
 def make_material(name, color, roughness=0.4, metallic=0.0):
     mat = bpy.data.materials.new(name)
     mat.use_nodes = True
@@ -69,6 +71,7 @@ def make_material(name, color, roughness=0.4, metallic=0.0):
 # Headband — a beveled Bezier arc from ear cup to ear cup
 # ---------------------------------------------------------------------------
 def build_headband():
+    # 3-point bezier curve (left end -> top -> right end), thickened with a bevel to look like a solid tube
     curve_data = bpy.data.curves.new("HeadbandCurve", type="CURVE")
     curve_data.dimensions = "3D"
     curve_data.resolution_u = 64
@@ -98,6 +101,7 @@ def build_headband():
 # ---------------------------------------------------------------------------
 # One ear cup: outer shell + inner cushion + connecting yoke
 # ---------------------------------------------------------------------------
+# builds one ear cup (shell + cushion + yoke); side is -1 for left or 1 for right
 def build_ear_cup(side, body_mat, cushion_mat, accent_mat):
     x = side * EAR_CUP_X
 
@@ -147,6 +151,7 @@ def build_ear_cup(side, body_mat, cushion_mat, accent_mat):
 # ---------------------------------------------------------------------------
 # Camera + lights for a quick studio-style preview render
 # ---------------------------------------------------------------------------
+# sets up a camera and a 3-point light rig (key/fill/rim) plus a floor, for a quick preview render
 def build_camera_and_lights():
     bpy.ops.object.camera_add(
         location=(3.2, -3.6, 1.4),
@@ -186,6 +191,7 @@ def build_camera_and_lights():
         bg.inputs["Strength"].default_value = 1.0
 
 
+# builds the full headphone model and, when run standalone, saves a preview render and .blend file
 def main():
     clear_scene()
 

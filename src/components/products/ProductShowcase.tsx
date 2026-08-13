@@ -16,9 +16,11 @@ const SOCIAL_LINKS = [
   { href: "#", label: "Twitter", initials: "X" },
 ];
 
+// products page: grid of all products plus a featured carousel highlighting one at a time
 export function ProductShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // wraps around in both directions so prev/next always lands on a valid product
   const goToIndex = (index: number) => {
     setActiveIndex((index + PRODUCTS.length) % PRODUCTS.length);
   };

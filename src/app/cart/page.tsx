@@ -8,6 +8,7 @@ import { ShopHeader } from "@/components/products/ShopHeader";
 import { Footer } from "@/components/Footer";
 import { formatPrice } from "@/lib/utils";
 
+// cart page: lists items with quantity controls, shows subtotal, links to checkout
 export default function CartPage() {
   const { items, subtotal, updateQuantity, removeItem, clear } = useCart();
 

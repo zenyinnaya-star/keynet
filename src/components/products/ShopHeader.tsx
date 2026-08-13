@@ -10,12 +10,14 @@ import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 import { BrandMark, Wordmark } from "@/components/BrandMark";
 
+// header's account menu — shows a login link when signed out, or a dropdown with logout when signed in
 function UserMenu() {
   const router = useRouter();
   const { user } = useUser();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
+  // closes the dropdown when clicking anywhere outside of it
   useEffect(() => {
     if (!open) return;
     const onClickOutside = (event: MouseEvent) => {
@@ -38,6 +40,7 @@ function UserMenu() {
     );
   }
 
+  // prefer the user's first name, fall back to the part of their email before the @
   const displayName =
     (user.user_metadata?.full_name as string | undefined)?.split(" ")[0] ||
     user.email?.split("@")[0] ||
@@ -81,12 +84,14 @@ function UserMenu() {
   );
 }
 
+// sticky site header with nav links, account menu, wishlist, and cart — used on every shop page
 export function ShopHeader() {
   const pathname = usePathname();
   const { count: cartCount } = useCart();
   const { count: wishlistCount } = useWishlist();
   const [scrolled, setScrolled] = useState(false);
 
+  // adds a background/shadow to the header once the page has scrolled a bit
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();

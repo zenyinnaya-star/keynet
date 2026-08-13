@@ -15,6 +15,7 @@ const IMAGE_CLIP = "polygon(0 0, 100% 0, 82% 100%, 0 100%)";
 const inputClass =
   "w-full rounded-lg border border-white/15 bg-black/40 px-4 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-teal-500 focus:outline-none";
 
+// login/signup form — same component renders both modes depending on the "mode" prop
 export function AuthCard({ mode }: { mode: Mode }) {
   const isSignup = mode === "signup";
   const router = useRouter();
@@ -29,6 +30,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
   const [status, setStatus] = useState<Status>("idle");
   const [submitting, setSubmitting] = useState(false);
 
+  // handles both the signup and login form submit, branching on mode
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setError("");
@@ -57,10 +59,12 @@ export function AuthCard({ mode }: { mode: Mode }) {
         return;
       }
       if (data.session) {
+        // email confirmation is off, so signup logs the user straight in
         router.push(next);
         router.refresh();
         return;
       }
+      // email confirmation is required, so show a "check your inbox" message instead
       setStatus("check-email");
       return;
     }
@@ -75,6 +79,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
     router.refresh();
   };
 
+  // sends a password reset email; only shown on the login form
   const handleForgotPassword = async () => {
     if (!email.trim()) {
       setError('Enter your email above first, then tap "Forgot password?".');
@@ -94,6 +99,7 @@ export function AuthCard({ mode }: { mode: Mode }) {
     setStatus("reset-sent");
   };
 
+  // kicks off Google OAuth login, works for both login and signup
   const handleGoogleSignIn = async () => {
     setError("");
     const supabase = createClient();

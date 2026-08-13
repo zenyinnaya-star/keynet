@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import type { Database } from "./types";
 
+// Supabase client for use in Server Components/Actions — reads and writes auth via Next's cookie store
 export async function createClient() {
   const cookieStore = await cookies();
 

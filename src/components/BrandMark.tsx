@@ -1,3 +1,4 @@
+// the keynex logo mark — an inline SVG so it can take on the current text color
 export function BrandMark({ className = "h-8 w-8" }: { className?: string }) {
   return (
     <span aria-hidden="true" className={`relative inline-flex shrink-0 items-center justify-center ${className}`}>
@@ -14,6 +15,7 @@ export function BrandMark({ className = "h-8 w-8" }: { className?: string }) {
   );
 }
 
+// the "keynex" text logo next to the mark
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
     <span className={`text-lg font-bold uppercase tracking-[0.18em] text-white ${className}`}>

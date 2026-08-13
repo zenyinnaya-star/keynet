@@ -5,6 +5,7 @@ import { getAverageRating, type Product } from "@/lib/products";
 import { StarRating } from "./StarRating";
 import { formatPrice } from "@/lib/utils";
 
+// modal showing a side-by-side spec table for the products picked for comparison
 export function CompareModal({
   products,
   onClose,
@@ -14,6 +15,7 @@ export function CompareModal({
 }) {
   if (products.length === 0) return null;
 
+  // union of every spec label across the selected products, so the table has one row per spec
   const specLabels = Array.from(
     new Set(products.flatMap((product) => product.specs.map((spec) => spec.label))),
   );

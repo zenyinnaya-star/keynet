@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
+// wraps content so it fades/slides into view once it's scrolled into the viewport
 export function Reveal({
   children,
   className,
@@ -19,6 +20,7 @@ export function Reveal({
     const el = ref.current;
     if (!el) return;
 
+    // watch the wrapped element and trigger the reveal once it enters the viewport, then stop watching
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

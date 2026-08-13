@@ -15,6 +15,7 @@ const COMPANY_LINKS = [
   { href: "/signup", label: "Sign Up" },
 ];
 
+// site-wide footer with shop/company links, shown at the bottom of every page
 export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black pt-16 pb-10 sm:px-10">

@@ -26,6 +26,7 @@ export type PlaceOrderInput = {
   promoCode: string;
 };
 
+// server action that creates an order + order_items in Supabase, then starts a Stripe checkout session
 export async function placeOrder(input: PlaceOrderInput): Promise<{ error: string }> {
   const supabase = await createClient();
   const {
@@ -55,12 +56,14 @@ export async function placeOrder(input: PlaceOrderInput): Promise<{ error: strin
     quantity: item.quantity,
   }));
 
+  // recompute everything server-side using DB prices, ignoring whatever the client sent
   const subtotal = lines.reduce((sum, line) => sum + line.product.price * line.quantity, 0);
   const shippingCost = input.delivery === "express" ? EXPRESS_SHIPPING : 0;
   const promoApplied = input.promoCode.trim().toUpperCase() === PROMO_CODE;
   const discount = promoApplied ? subtotal * PROMO_DISCOUNT : 0;
   const total = Math.max(subtotal + shippingCost - discount, 0);
 
+  // create the order first so we have an id to attach line items and the Stripe session to
   const { data: order, error: orderError } = await supabase
     .from("orders")
     .insert({
@@ -92,6 +95,7 @@ export async function placeOrder(input: PlaceOrderInput): Promise<{ error: strin
   }
 
   const origin = (await headers()).get("origin") ?? "http://localhost:3000";
+  // spread the discount proportionally across each line item since Stripe has no single "total discount" field here
   const discountRatio = subtotal > 0 ? (subtotal - discount) / subtotal : 1;
 
   const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = lines.map((line) => ({
@@ -133,5 +137,6 @@ export async function placeOrder(input: PlaceOrderInput): Promise<{ error: strin
     return { error: "Couldn't start payment. Please try again." };
   }
 
+  // redirect() throws internally, so this never actually returns to the caller on success
   redirect(session.url);
 }

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Contact | keynex",
 };
 
+// coordinate pairs drawn as animated connection lines on the world map (NY-London-Tokyo-Sydney etc.)
 const MAP_DOTS = [
   { start: { lat: 40.7128, lng: -74.006 }, end: { lat: 51.5074, lng: -0.1278 } },
   { start: { lat: 51.5074, lng: -0.1278 }, end: { lat: 35.6762, lng: 139.6503 } },
@@ -16,6 +17,7 @@ const MAP_DOTS = [
   { start: { lat: 51.5074, lng: -0.1278 }, end: { lat: 28.6139, lng: 77.209 } },
 ];
 
+// contact page: contact details, the contact form, and a world map graphic
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-black text-white">

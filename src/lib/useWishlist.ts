@@ -6,6 +6,7 @@ const STORAGE_KEY = "keynex-wishlist";
 const listeners = new Set<() => void>();
 let cachedIds: string[] | null = null;
 
+// wishlist just stores product slugs, not full product objects
 function readStoredIds(): string[] {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
@@ -39,11 +40,13 @@ function setStoredIds(ids: string[]) {
   listeners.forEach((listener) => listener());
 }
 
+// hook for reading and toggling the wishlist, backed by localStorage
 export function useWishlist() {
   const ids = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const has = useCallback((slug: string) => ids.includes(slug), [ids]);
 
+  // adds the slug if it's not already wishlisted, removes it if it is
   const toggle = useCallback((slug: string) => {
     const current = getSnapshot();
     const next = current.includes(slug)

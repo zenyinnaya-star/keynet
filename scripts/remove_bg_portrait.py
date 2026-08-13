@@ -1,3 +1,5 @@
+# like remove_bg.py, but for portraits: lets you mark specific face/torso/background anchor boxes
+# instead of relying on a single bounding rectangle, for more control over tricky shots
 import sys
 import cv2
 import numpy as np
@@ -34,14 +36,17 @@ def anchor(cx_pct, cy_pct, w_pct, h_pct, label=cv2.GC_FGD):
 
 
 if ANCHOR_ARGS:
+    # each arg is "cx,cy,w,h", optionally prefixed "bg:" to mark it as background instead of foreground
     for spec in ANCHOR_ARGS:
         is_bg = spec.startswith("bg:")
         values = [float(v) for v in (spec[3:] if is_bg else spec).split(",")]
         anchor(*values, label=cv2.GC_BGD if is_bg else cv2.GC_FGD)
 else:
+    # sensible defaults for a centered portrait photo
     anchor(0.5, 0.30, 0.16, 0.12)  # face
     anchor(0.5, 0.80, 0.22, 0.14)  # torso / shirt
 
+# GC_INIT_WITH_MASK uses our hand-marked regions instead of a single bounding box
 cv2.grabCut(img, mask, None, bgd_model, fgd_model, 12, cv2.GC_INIT_WITH_MASK)
 
 mask2 = np.where((mask == cv2.GC_FGD) | (mask == cv2.GC_PR_FGD), 255, 0).astype("uint8")

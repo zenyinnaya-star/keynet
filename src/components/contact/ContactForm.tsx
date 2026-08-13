@@ -5,12 +5,14 @@ import { cn } from "@/lib/utils";
 
 type Step = "name" | "email" | "done";
 
+// two-step contact form: collects name, then email, then shows a confirmation (demo only, doesn't send anywhere)
 export function ContactForm() {
   const [step, setStep] = useState<Step>("name");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
 
+  // moves from the name step to the email step once a name has been entered
   const handleNext = () => {
     setError("");
     if (!name.trim()) {

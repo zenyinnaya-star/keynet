@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import { motion } from "motion/react";
 
+// wraps content in a soft, slowly-shifting glow border; set animate={false} for a static version
 export const BackgroundGradient = ({
   children,
   className,
@@ -15,6 +16,7 @@ export const BackgroundGradient = ({
   containerClassName?: string;
   animate?: boolean;
 }) => {
+  // background-position keyframes for the animated gradient sweep
   const variants = {
     initial: {
       backgroundPosition: "0 50%",

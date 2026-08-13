@@ -5,6 +5,7 @@ import { ShopHeader } from "@/components/products/ShopHeader";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 
+// small pill label used to mark each phase of the timeline (e.g. "Phase 01 — March 2023")
 function PhaseTag({ label }: { label: string }) {
   return (
     <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs text-[var(--keynex-muted)]">
@@ -14,6 +15,7 @@ function PhaseTag({ label }: { label: string }) {
   );
 }
 
+// company story page: three scrollytelling sections covering the founding, co-founders, and current CEO
 export function HeritageTimeline() {
   return (
     <div className="min-h-screen bg-black text-white">
