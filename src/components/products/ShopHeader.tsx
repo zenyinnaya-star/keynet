@@ -10,6 +10,43 @@ import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 import { BrandMark, Wordmark } from "@/components/BrandMark";
 
+function SearchIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className} aria-hidden>
+      <circle cx="11" cy="11" r="6.5" />
+      <path strokeLinecap="round" d="m20 20-4-4" />
+    </svg>
+  );
+}
+
+function HeartIcon({ className, filled }: { className?: string; filled?: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill={filled ? "currentColor" : "none"}
+      stroke="currentColor"
+      strokeWidth="1.5"
+      className={className}
+      aria-hidden
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 20.5s-7.5-4.6-9.8-9.2C.7 7.9 2.3 4.5 5.6 3.8c2-.4 3.9.5 5 2.1 1.1-1.6 3-2.5 5-2.1 3.3.7 4.9 4.1 3.4 7.5-2.3 4.6-9.8 9.2-9.8 9.2Z"
+      />
+    </svg>
+  );
+}
+
+function BagIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className} aria-hidden>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 8h12l-1 12.5a1.5 1.5 0 0 1-1.5 1.5h-7a1.5 1.5 0 0 1-1.5-1.5L6 8Z" />
+      <path strokeLinecap="round" d="M9 8V6a3 3 0 0 1 6 0v2" />
+    </svg>
+  );
+}
+
 function UserMenu() {
   const router = useRouter();
   const { user } = useUser();
@@ -83,9 +120,11 @@ function UserMenu() {
 
 export function ShopHeader() {
   const pathname = usePathname();
+  const router = useRouter();
   const { count: cartCount } = useCart();
   const { count: wishlistCount } = useWishlist();
   const [scrolled, setScrolled] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -131,7 +170,7 @@ export function ShopHeader() {
             pathname.startsWith("/products") && "text-white",
           )}
         >
-          Our Products
+          Catalog
           <span
             className={cn(
               "absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-teal-500 transition-transform duration-300 group-hover:scale-x-100",
@@ -161,7 +200,7 @@ export function ShopHeader() {
             pathname === "/contact" && "text-white",
           )}
         >
-          Contacts
+          Support
           <span
             className={cn(
               "absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-teal-500 transition-transform duration-300 group-hover:scale-x-100",
@@ -172,13 +211,37 @@ export function ShopHeader() {
       </nav>
 
       <div className="flex items-center gap-3">
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            const value = searchValue.trim();
+            router.push(value ? `/products?search=${encodeURIComponent(value)}` : "/products");
+          }}
+          className="relative hidden lg:block"
+        >
+          <input
+            type="search"
+            value={searchValue}
+            onChange={(event) => setSearchValue(event.target.value)}
+            placeholder="Search system..."
+            aria-label="Search products"
+            className="w-44 rounded-full border border-white/15 bg-white/[0.04] py-2 pr-9 pl-4 text-xs text-white placeholder:text-white/40 focus:border-teal-500 focus:outline-none"
+          />
+          <button
+            type="submit"
+            aria-label="Search"
+            className="absolute top-1/2 right-3 -translate-y-1/2 text-white/40 transition-colors hover:text-white"
+          >
+            <SearchIcon className="h-3.5 w-3.5" />
+          </button>
+        </form>
         <UserMenu />
         <Link
           href="/wishlist"
           aria-label={`Wishlist, ${wishlistCount} item${wishlistCount === 1 ? "" : "s"}`}
-          className="relative flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-sm text-white/70 transition-colors hover:border-white/50 hover:text-white"
+          className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-white/50 hover:text-white"
         >
-          <span aria-hidden>♡</span>
+          <HeartIcon className="h-4 w-4" filled={wishlistCount > 0} />
           {wishlistCount > 0 && (
             <span className="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-teal-600 px-1 text-[10px] font-bold text-white">
               {wishlistCount}
@@ -188,9 +251,9 @@ export function ShopHeader() {
         <Link
           href="/cart"
           aria-label={`Cart, ${cartCount} item${cartCount === 1 ? "" : "s"}`}
-          className="relative flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-sm text-white/70 transition-colors hover:border-white/50 hover:text-white"
+          className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-white/50 hover:text-white"
         >
-          <span aria-hidden>🛒</span>
+          <BagIcon className="h-4 w-4" />
           {cartCount > 0 && (
             <span className="absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-teal-600 px-1 text-[10px] font-bold text-white">
               {cartCount}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { PRODUCTS } from "@/lib/products";
 import { ProductCard } from "./ProductCard";
 import { CompareModal } from "./CompareModal";
@@ -8,7 +9,8 @@ import { CompareModal } from "./CompareModal";
 const MAX_COMPARE = 3;
 
 export function ProductGrid() {
-  const [query, setQuery] = useState("");
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(() => searchParams.get("search") ?? "");
   const [compareSlugs, setCompareSlugs] = useState<string[]>([]);
   const [showCompare, setShowCompare] = useState(false);
 

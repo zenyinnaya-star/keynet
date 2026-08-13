@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getAverageRating, type Product } from "@/lib/products";
 import { StarRating } from "./StarRating";
 import { WishlistButton } from "./WishlistButton";
+import { AddToCartButton } from "./AddToCartButton";
 import { cn, formatPrice } from "@/lib/utils";
 
 export function ProductCard({
@@ -55,26 +56,32 @@ export function ProductCard({
           <p className="mt-1 text-sm font-semibold text-teal-500">{formatPrice(product.price)}</p>
           <div className="mt-2 flex items-center gap-2">
             <StarRating value={avgRating} />
-            <span className="text-xs text-white/40">({product.reviews.length})</span>
+            <span className="text-sm text-[var(--keynex-reassure)]">
+              {product.reviews.length > 0 ? `(${product.reviews.length})` : "Free shipping"}
+            </span>
           </div>
         </div>
       </Link>
 
-      <label
-        className={cn(
-          "relative z-10 flex items-center gap-2 border-t border-white/10 px-6 py-3 text-xs text-white/60 transition-colors hover:border-t-[#F2D2FF]/30 hover:bg-[#F2D2FF]/5",
-          compareDisabled && !compareChecked && "opacity-40",
-        )}
-      >
-        <input
-          type="checkbox"
-          checked={compareChecked}
-          disabled={compareDisabled && !compareChecked}
-          onChange={(event) => onCompareChange(event.target.checked)}
-          className="h-4 w-4 accent-teal-600"
-        />
-        Compare
-      </label>
+      <div className="relative z-10 flex items-center justify-between gap-3 border-t border-white/10 px-6 py-3">
+        <AddToCartButton slug={product.slug} className="shrink-0" />
+
+        <label
+          className={cn(
+            "flex items-center gap-2 text-xs text-white/60 transition-colors hover:text-white",
+            compareDisabled && !compareChecked && "opacity-40",
+          )}
+        >
+          <input
+            type="checkbox"
+            checked={compareChecked}
+            disabled={compareDisabled && !compareChecked}
+            onChange={(event) => onCompareChange(event.target.checked)}
+            className="h-4 w-4 accent-teal-600"
+          />
+          Compare
+        </label>
+      </div>
     </div>
   );
 }

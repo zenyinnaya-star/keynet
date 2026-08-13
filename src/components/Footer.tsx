@@ -38,7 +38,7 @@ export function Footer() {
           </div>
 
           <div className="space-y-3 md:col-span-3">
-            <h4 className="text-xs font-bold tracking-[0.2em] text-white uppercase">Shop</h4>
+            <h4 className="text-xs font-bold tracking-[0.2em] text-white uppercase">System</h4>
             <ul className="space-y-2 text-xs text-[var(--keynex-muted)]">
               {SHOP_LINKS.map((link) => (
                 <li key={link.href}>
@@ -51,7 +51,7 @@ export function Footer() {
           </div>
 
           <div className="space-y-3 md:col-span-4">
-            <h4 className="text-xs font-bold tracking-[0.2em] text-white uppercase">Company</h4>
+            <h4 className="text-xs font-bold tracking-[0.2em] text-white uppercase">Collective</h4>
             <ul className="space-y-2 text-xs text-[var(--keynex-muted)]">
               {COMPANY_LINKS.map((link) => (
                 <li key={link.href}>

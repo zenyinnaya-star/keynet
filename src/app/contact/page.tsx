@@ -26,10 +26,10 @@ export default function ContactPage() {
 
         <div className="bg-grain relative mt-6 overflow-hidden rounded-3xl bg-zinc-950 p-8 ring-1 ring-white/10 sm:p-12">
           <p className="text-xs font-semibold tracking-[0.3em] uppercase">
-            <span style={{ color: "#F2D2FF" }}>How to contact us</span>
+            <span className="text-[var(--keynex-teal-bright)]">How to contact us</span>
           </p>
           <h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
-            <span style={{ color: "#F2D2FF" }}>Contacts</span>
+            <span className="text-[var(--keynex-teal-bright)]">Contacts</span>
           </h1>
 
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -49,7 +49,7 @@ export default function ContactPage() {
 
           <div className="mt-12">
             <p className="text-xs font-semibold tracking-[0.3em] uppercase">
-              <span style={{ color: "#F2D2FF" }}>Get in touch</span>
+              <span className="text-[var(--keynex-teal-bright)]">Get in touch</span>
             </p>
             <div className="mt-4">
               <ContactForm />

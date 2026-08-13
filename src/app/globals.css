@@ -15,6 +15,10 @@
   --keynex-teal: #13b8a6;
   --keynex-teal-bright: #25d1bd;
   --keynex-lilac: #f2d2ff;
+  /* ~10.1:1 against the #101716/#121816 panel range — for reassurance
+     copy (trust row, shipping/warranty cues) that must stay legible
+     without reading as a full-strength heading. */
+  --keynex-reassure: #c8d0d2;
 }
 
 @theme inline {
@@ -36,7 +40,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
 
 @keyframes fade-in-up {

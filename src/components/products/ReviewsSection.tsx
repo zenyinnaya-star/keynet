@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useReviews } from "@/lib/useReviews";
 import { getAverageRating } from "@/lib/products";
 import { StarRating } from "./StarRating";
+import { ReviewerAvatar } from "./ReviewerAvatar";
 
 export function ReviewsSection({ slug }: { slug: string }) {
   const { reviews, addReview } = useReviews(slug);
@@ -36,13 +37,16 @@ export function ReviewsSection({ slug }: { slug: string }) {
 
       <div className="mt-6 space-y-6">
         {reviews.map((review) => (
-          <div key={review.id} className="border-b border-white/10 pb-6">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-white">{review.author}</p>
-              <p className="text-xs text-white/40">{review.date}</p>
+          <div key={review.id} className="flex gap-3 border-b border-white/10 pb-6">
+            <ReviewerAvatar name={review.author} />
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-semibold text-white">{review.author}</p>
+                <p className="text-xs text-white/40">{review.date}</p>
+              </div>
+              <StarRating value={review.rating} className="mt-1" />
+              <p className="mt-2 text-sm leading-6 text-white/70">{review.comment}</p>
             </div>
-            <StarRating value={review.rating} className="mt-1" />
-            <p className="mt-2 text-sm leading-6 text-white/70">{review.comment}</p>
           </div>
         ))}
       </div>

@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PRODUCTS } from "@/lib/products";
 import { ShopHeader } from "./ShopHeader";
+import { Footer } from "@/components/Footer";
 import { ProductGrid } from "./ProductGrid";
 import { AddToCartButton } from "./AddToCartButton";
 import { WishlistButton } from "./WishlistButton";
@@ -34,10 +35,10 @@ export function ProductShowcase() {
         <div className="mb-8 flex items-end justify-between">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em]">
-              <span style={{ color: "#F2D2FF" }}>Shop</span>
+              <span className="text-[var(--keynex-teal-bright)]">Shop</span>
             </p>
             <h1 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
-              Our <span style={{ color: "#F2D2FF" }}>Products</span>
+              Our <span className="text-[var(--keynex-teal-bright)]">Products</span>
             </h1>
           </div>
           <p className="hidden text-xs text-white/40 sm:block">
@@ -45,7 +46,9 @@ export function ProductShowcase() {
           </p>
         </div>
 
-        <ProductGrid />
+        <Suspense fallback={null}>
+          <ProductGrid />
+        </Suspense>
 
         {/* Featured showcase */}
         <div className="mt-16 scroll-mt-24">
@@ -159,9 +162,7 @@ export function ProductShowcase() {
         </div>
       </div>
 
-      <div className="px-6 pb-10 text-[11px] text-white/40 uppercase sm:px-10">
-        © 2026 keynex — All rights reserved
-      </div>
+      <Footer />
     </div>
   );
 }

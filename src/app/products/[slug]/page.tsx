@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAverageRating, getProductBySlug, PRODUCTS } from "@/lib/products";
 import { ShopHeader } from "@/components/products/ShopHeader";
+import { Footer } from "@/components/Footer";
 import { WishlistButton } from "@/components/products/WishlistButton";
 import { AddToCartButton } from "@/components/products/AddToCartButton";
 import { StarRating } from "@/components/products/StarRating";
@@ -42,7 +43,7 @@ export default async function ProductDetailPage({
       <div className="mx-auto max-w-5xl px-6 pb-24 sm:px-10">
         <nav className="mb-8 text-xs text-white/40">
           <Link href="/products" className="transition-colors hover:text-white">
-            Our Products
+            Catalog
           </Link>
           <span className="mx-2">/</span>
           <span className="text-white/70">{product.name}</span>
@@ -112,9 +113,7 @@ export default async function ProductDetailPage({
         </div>
       </div>
 
-      <div className="px-6 py-10 text-[11px] text-white/40 uppercase sm:px-10">
-        © 2026 keynex — All rights reserved
-      </div>
+      <Footer />
     </div>
   );
 }

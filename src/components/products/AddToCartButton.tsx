@@ -23,12 +23,14 @@ export function AddToCartButton({
         window.setTimeout(() => setAdded(false), 1800);
       }}
       className={cn(
-        "flex items-center gap-2 rounded-full py-2.5 pr-5 pl-4 text-xs font-bold transition-all",
-        added ? "bg-green-600 text-white shadow-[0_0_15px_rgba(242,210,255,0.25)]" : "bg-gradient-to-r from-white to-white/80 text-black hover:from-white hover:to-white hover:shadow-[0_0_20px_rgba(242,210,255,0.3)]",
+        "flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold tracking-[0.15em] uppercase transition-all",
+        added
+          ? "bg-green-600 text-white shadow-[0_0_15px_rgba(242,210,255,0.25)]"
+          : "bg-[var(--keynex-teal)] text-black hover:bg-[var(--keynex-teal-bright)] hover:shadow-[0_0_20px_rgba(19,184,166,0.3)]",
         className,
       )}
     >
-      <span>{added ? "Added to cart ✓" : "+ Add to cart"}</span>
+      <span>{added ? "Added ✓" : "Add to cart"}</span>
     </button>
   );
 }
